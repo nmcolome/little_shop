@@ -22,9 +22,9 @@ FactoryGirl.define do
     title
     description 'Made in the Universe Space Area'
     price 100.00
-    image
+    # image
     status 'Active'
-    categories
+    # categories
   end
 
   sequence :title do |n|
