@@ -2,11 +2,10 @@ require 'rails_helper'
 
 RSpec.describe "visitor can add items and remove from the cart" do
   scenario "they can click a link to add item to cart" do
-    category1 = create(:category)
-    item1 = category1.items.first ###?????
-    item2 = category1.items.last  ###????
+    category = create(:category, name: "Surf")
+    item1 = create(:item, title: "Wetsuit", category: category)
 
-    visit category_path(category1)
+    visit category_path(category)
 
     expect(page).to have_content(item1.title)
     expect(page).to have_link("Add to Cart")
@@ -24,11 +23,10 @@ RSpec.describe "visitor can add items and remove from the cart" do
   end
 
   scenario "visitor starts with an item and removes" do
-    category1 = create(:category)
-    item1 = category1.items.first ###?????
-    item2 = category1.items.last  ###????
+    category = create(:category, name: "Surf")
+    item1 = create(:item, title: "Wetsuit", category: category)
 
-    visit category_path(category1)
+    visit category_path(category)
 
     expect(page).to have_content(item1.title)
     expect(page).to have_link("Add to Cart")
@@ -45,6 +43,7 @@ RSpec.describe "visitor can add items and remove from the cart" do
     expect(page).to have_css("green") ####????
     expect(page).to have_content("Successfully removed #{item1.title} from your cart.")
     expect(page).to have_link(item_path(item1))
-    #(Test that the item is not in the cart)?????
+    #(Test that the item is not in the cart)????? How do we test this is the content from line 44 is static? Won't it remain making it impossible for us to test expect(page).to_not have_content(item1.title)
+
   end
 end
