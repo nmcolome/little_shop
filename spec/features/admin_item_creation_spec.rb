@@ -3,30 +3,25 @@ require 'rails_helper'
 RSpec.describe "item creation" do
   context "as admin" do
     it "they fill out new item form" do
-      admin = User.create(email: "adumbledore@email.com"
-                        username: "adumbledore",
-                        password: "password",
-                        role: 1)
-      category = Category.create(name: "Yoga")
+      admin = create(:user, role: 1)
+      create_list(:category, 2)
 
-      visit login_path
-      fill_in "Username", with: admin.username
-      fill_in "Password", with: "password"
-      click_button "Sign In"
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-      visit "admin/items/new" #new_admin_item_path
+      visit "admin/dashboard"
+      click_on "Add new item"
+
+      expect(current_path).to eq "admin/items/new" #new_admin_item_path
       fill_in "Title", with: "Mat"
       fill_in "Description", with: "Black"
       fill_in "Price", with: "50"
-      fill_in "Categories", with: "Yoga, Gear"
-      # select "Yoga", from: "categories"
-      # fill_in "Status", with: "active"
+      fill_in "Categories", with: "#{category.first.name}, #{category.last.name}"
+      fill_in "Status", with: "Active"
 
       click_on "Create Item"
       item = Item.find_by(title: "Mat")
 
-#SHOULD I REDIRECT TO A SHOW PAGE OR UPDATE THE INDEX PAGE??
-      expect(current_path).to eq(admin_item_path(item)) #"/admin/items/#{item.id}"
+      expect(current_path).to eq(item_path(item)) #"items/#{item.id}"
       expect(page).to have_content("Mat")
       expect(page).to have_content("Black")
       expect(page).to have_content("$50.00")
@@ -37,17 +32,10 @@ RSpec.describe "item creation" do
 
   context "as registered user" do
     it "they can't see the page" do
-      user = User.create(email: "hpotter@email.com"
-                        username: "hpotter",
-                        password: "password",
-                        role: 0)
+      user = create(:user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-      visit login_path
-      fill_in "Username", with: user.username
-      fill_in "Password", with: "password"
-      click_button "Sign In"
-
-      visit "user/items/new" #new_user_item_path
+      visit "admin/items/new"
 
       expect(page).to_not have_content("Create Item")
       expect(page).to have_content("The page you were looking for doesn't exist.")
@@ -57,7 +45,7 @@ RSpec.describe "item creation" do
   context "as visitor" do
     it "they can't see the page" do
 
-      visit "user/items/new" #new_user_item_path
+      visit "admin/items/new"
 
       expect(page).to_not have_content("Create Item")
       expect(page).to have_content("The page you were looking for doesn't exist.")
