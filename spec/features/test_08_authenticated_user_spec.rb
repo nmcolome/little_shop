@@ -7,7 +7,7 @@ RSpec.describe "Authenticated user can log in" do
 
     click_link "Login"
 
-    visit login_path
+    expect(current_path).to eq(login_path)
 
     fill_in "Username", with: user.username
     fill_in "Password", with: user.password
@@ -22,7 +22,7 @@ RSpec.describe "Authenticated user can log in" do
     expect(page).to_not have_content("Login")
   end
 
-  scenario "user can not use bad credentials to log in" do
+  scenario "user can not use bad username" do
     user = create(:user)
 
     visit login_path
@@ -32,5 +32,19 @@ RSpec.describe "Authenticated user can log in" do
     click_button "Login"
 
     expect(page).to have_content("Login to your account.")
+    expect(page).to have_content("Incorrect username or password")
+  end
+
+  scenario "user can not use bad password" do
+    user = create(:user)
+
+    visit login_path
+
+    fill_in "Username", with: user.username
+    fill_in "Password", with: "Meatballz"
+    click_button "Login"
+
+    expect(page).to have_content("Login to your account.")
+    expect(page).to have_content("Incorrect username or password")
   end
 end
