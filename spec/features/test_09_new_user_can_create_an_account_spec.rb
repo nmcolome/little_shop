@@ -45,7 +45,7 @@ RSpec.describe "visitor can create an account" do
       expect(page).to have_content("Please complete requirements before creating account")
     end
 
-    scenario "visitor can not log in without username" do
+    scenario "visitor can not log in without password" do
       visit login_path
 
       click_link "Create Account"
