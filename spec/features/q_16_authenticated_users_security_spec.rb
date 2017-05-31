@@ -31,4 +31,8 @@ RSpec.describe "An authenticated regular user" do
     visit new_admin_item_path
     expect(page).to have_content "The page you were looking for doesn't exist."
   end
+
+  it "user cannot make themselves an admin" do
+    
+  end
 end
