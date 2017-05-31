@@ -27,7 +27,7 @@ RSpec.describe "visitor can create an account" do
     fill_in "Password Confirm", with: "meatball"
 
     click_button "Create Account"
-# Does current path reroute back to the root path or a new user path???
+
     expect(current_path).to eq("/dashboard")
     expect(page).to have_content("Logged in as zuzu")
     expect(page).to have_content("Logout")
