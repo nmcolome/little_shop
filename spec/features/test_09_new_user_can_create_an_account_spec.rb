@@ -19,7 +19,8 @@ RSpec.describe "visitor can create an account" do
     visit login_path
     click_link "Create Account"
 
-    fill_in "Name", with: "zuzu"
+    fill_in "first_name", with: "zuzu"
+    fill_in "last_name", with: "Thomas"
     fill_in "Username", with: "zuzu_puppy"
     fill_in "Password", with: "meatball"
     fill_in "Email", with: "meatball_lover@puppy.com"
@@ -27,7 +28,7 @@ RSpec.describe "visitor can create an account" do
 
     click_button "Create Account"
 # Does current path reroute back to the root path or a new user path???
-    expect(current_path).to eq("root_path")
+    expect(current_path).to eq("/dashboard")
     expect(page).to have_content("Logged in as zuzu")
     expect(page).to have_content("Logout")
     expect(page).to_not have_content("Login")
@@ -38,8 +39,10 @@ RSpec.describe "visitor can create an account" do
 
       click_link "Create Account"
 
-      fill_in "Name", with: "zuzu"
+      fill_in "first_name", with: "zuzu"
+      fill_in "last_name", with: "Thomas"
       fill_in "Password", with: "meatball"
+      fill_in "Email", with: "meatball_lover@puppy.com"
       fill_in "Password Confirm", with: "meatball"
 
       click_button "Create Account"
@@ -52,8 +55,26 @@ RSpec.describe "visitor can create an account" do
 
       click_link "Create Account"
 
-      fill_in "Name", with: "zuzu"
+      fill_in "first_name", with: "zuzu"
+      fill_in "last_name", with: "Thomas"
       fill_in "username", with: "zuzu_puppy"
+      fill_in "Email", with: "meatball_lover@puppy.com"
+      fill_in "Password Confirm", with: "meatball"
+
+      click_button "Create Account"
+
+      expect(page).to have_content("Please complete requirements before creating account")
+    end
+
+    scenario "visitor can not log in without email" do
+      visit login_path
+
+      click_link "Create Account"
+
+      fill_in "first_name", with: "zuzu"
+      fill_in "last_name", with: "Thomas"
+      fill_in "username", with: "zuzu_puppy"
+      fill_in "Password", with: "meatball"
       fill_in "Password Confirm", with: "meatball"
 
       click_button "Create Account"
