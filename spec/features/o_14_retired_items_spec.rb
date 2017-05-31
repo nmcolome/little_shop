@@ -9,10 +9,10 @@ RSpec.describe "when a user views a retired item" do
 
     visit item_path(item)
 
-    expect(page).to have_content item.name
+    expect(page).to have_content item.title
     expect(page).to have_content item.description
     expect(page).to have_content item.image
-    
+
     expect(page).to_not have_content "Add to Cart"
     expect(page).to have_content "Item Retired"
   end
