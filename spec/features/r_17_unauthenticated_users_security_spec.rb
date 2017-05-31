@@ -31,18 +31,16 @@ RSpec.describe "An unauthenticated user" do
 
     expect(page).to have_content item.name
     expect(page).to have_content item.price
-    expect(page).to have_content item.image
+    expect(page).to has_css('img', "") ####fix this with an image source
   end
 
   it "cannot view the administrator screens" do
-    visit admin_path(admin)
+    visit '/admin/dashboard'
     expect(page).to_not have_content "Admin Dashboard"
     expect(page).to have_content "The page you were looking for doesn't exist."
   end
 
   it "cannot make themselves an administrator" do
-    ### I think this could be tested by them just not having access to the admin dashboard...
-    # I'm not really sure how else to test it?
-    # Is there a way to test if a user has access to a database?
+
   end
 end
