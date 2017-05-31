@@ -19,18 +19,16 @@ RSpec.describe "An authenticated regular user" do
   end
 
   it "cannot view the administrator screens or use admin functionality" do
-    fill_in "Username", with: user.username
-    fill_in "Password", with: user.password
-    click_button "Login"
+    visit '/admin/dashboard'
+    item = create(:item)
 
-    visit admin_path(:current_user)
     expect(page).to_not have_content "Admin Dashboard"
     expect(page).to have_content "The page you were looking for doesn't exist."
-  end
 
-  it "cannot make themselves an admin" do
-    ### I think this could be tested by them just not having access to the admin dashboard...
-    # I'm not really sure how else to test it?
-    # Is there a way to test if a user has access to a database?
+    visit admin_item_path(item)
+    expect(page).to have_content "The page you were looking for doesn't exist."
+
+    visit new_admin_item_path
+    expect(page).to have_content "The page you were looking for doesn't exist."
   end
 end
