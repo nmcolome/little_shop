@@ -3,13 +3,14 @@ require 'rails_helper'
 RSpec.describe "visitor can create an account" do
   scenario "visitor can get to new account page" do
     visit root_path
-    escpect(page).to have_content "Login"
+    expect(page).to have_content("Login")
 
     click_link "Login"
     expect(current_path).to eq(login_path)
 
-    find("input[placeholder='Username']")
-    find("input[placeholder='Password']")
+# Is this a good way to test for creating a user account?
+    # find("input[placeholder='Username']")
+    # find("input[placeholder='Password']")
 
     expect(page).to have_content("Create Account")
   end
@@ -21,6 +22,7 @@ RSpec.describe "visitor can create an account" do
     fill_in "Name", with: "zuzu"
     fill_in "Username", with: "zuzu_puppy"
     fill_in "Password", with: "meatball"
+    fill_in "Email", with: "meatball_lover@puppy.com"
     fill_in "Password Confirm", with: "meatball"
 
     click_button "Create Account"
