@@ -12,9 +12,10 @@ RSpec.describe "User can view past orders" do
   fill_in "Password", with: user.password
   click_button "Login"
 
-  visit orders_path
+  visit user_orders_path(user)
 
-  expect(page).to have_content("Order #{order_1.id}: $#{order_1.price}")
-  expect(page).to have_content("Order #{order_2.id}: $#{order_2.price}")
+#Should we add total price to order table???
+  expect(page).to have_content("Order #{order_1.id}")
+  expect(page).to have_content("Order #{order_2.id}")
   end
 end
