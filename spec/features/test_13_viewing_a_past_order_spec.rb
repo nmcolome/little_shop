@@ -11,15 +11,15 @@ RSpec.describe "User views a single order" do
 
       visit login_path
 
-      fill_in 'Username', with: user.username
-      fill_in 'Password', with: user.password
-      click_button 'Login'
+      fill_in "Username", with: user.username
+      fill_in "Password", with: user.password
+      click_button "Login"
 
       visit orders_path
 
-      expect(page).to have_link('View order', href: order_path(order_1))
+      expect(page).to have_link("View order", href: order_path(order_1))
 
-      click_link 'View order', href: order_path(order)
+      click_link "View order", href: order_path(order)
 
       expect(page).to have_content("#{item_1.title} $#{item_1.price}")
       expect(page).to have_content("#{item_2.title} $#{item_2.price}")
