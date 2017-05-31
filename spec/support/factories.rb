@@ -21,9 +21,10 @@ FactoryGirl.define do
   factory :item do
     title
     description 'Made in the Universe Space Area'
-    price 100
+    price 100.00
     image
-    status 'in stock'
+    status 'Active'
+    categories
   end
 
   sequence :title do |n|
@@ -58,7 +59,7 @@ FactoryGirl.define do
   end
 
   factory :order do
-    status 'in stock'
+    status 'Paid'
     item 3
     date_time
   end
