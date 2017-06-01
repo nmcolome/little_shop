@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :create, :new]
 
-  resources :items, only: [:show]
+  resources :items, only: [:show, :index]
+
+  resources :categories, only: [:show]
+
+  resources :carts, only: [:create, :index]
 
   namespace :admin do
     resources :dashboards, only: [:show]

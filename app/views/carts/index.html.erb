@@ -1,0 +1,8 @@
+<% @items.each do |item, values| %>
+  <p>Product: <%= item.title %></p>
+  <p>Description: <%= item.description %></p>
+  <p>Price: $<%= number_with_precision(item.price, :precision => 2) %></p>
+  <p>Quantity: <%= values[:quantity] %></p>
+  <p>Subtotal: $<%= number_with_precision(values[:subtotal], :precision => 2) %></p>
+<% end %>
+<p>Total: $<%= number_with_precision(@cart.total, :precision => 2) %></p>
