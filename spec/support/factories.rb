@@ -23,7 +23,7 @@ FactoryGirl.define do
     description 'Made in the Universe Space Area'
     price 100.00
     # image
-    status 'Active'
+    status 0
     # categories
   end
 
@@ -59,7 +59,7 @@ FactoryGirl.define do
   end
 
   factory :order do
-    status 'Paid'
+    status 0
     item 3
     date_time
   end
