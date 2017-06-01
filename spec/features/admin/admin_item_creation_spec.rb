@@ -7,8 +7,8 @@ RSpec.describe "item creation" do
       create_list(:category, 2)
 
       visit login_path
-      fill_in "user[username]", with: admin.username
-      fill_in "user[password]", with: admin.password
+      fill_in "Username", with: admin.username
+      fill_in "Password", with: admin.password
       click_on 'Login'
       # allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
