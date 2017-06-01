@@ -8,6 +8,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboards, only: [:show]
-    resources :items, only: [:new, :create]
+    resources :items, only: [:new, :create, :edit]
   end
 end

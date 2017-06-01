@@ -29,7 +29,7 @@ RSpec.describe "item creation" do
       expect(page).to have_content("Mat")
       expect(page).to have_content("Black")
       expect(page).to have_content("$50.00")
-      expect(page).to have_content("Active")  #by default
+      expect(page).to have_content("active")  #by default
       expect(page).to have_link('Edit Item')
     end
   end
