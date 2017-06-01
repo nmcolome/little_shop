@@ -33,15 +33,15 @@ FactoryGirl.define do
 
   factory :user do
     role 0
-    username
+    username 
     email 'meatball_lover@puppy'
-    password_digest 'meatball'
-    address_line '2020 Lawrence st'
+    password 'meatball'
+    address '2020 Lawrence st'
     first_name 'Zuzu'
     last_name 'Thomas'
     state 'CO'
     city 'Denver'
-    zipcode 80205
+    zipcode '80205'
 
     factory :user_with_orders do
       transient do

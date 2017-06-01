@@ -6,12 +6,16 @@ RSpec.describe "item creation" do
       admin = create(:user, role: 1)
       create_list(:category, 2)
 
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+      visit login_path
+      fill_in "user[username]", with: admin.username
+      fill_in "user[password]", with: admin.password
+      click_on 'Login'
+      # allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-      visit "admin/dashboard"
+      visit admin_dashboard_path(admin)
       click_on "Add new item"
 
-      expect(current_path).to eq "admin/items/new" #new_admin_item_path
+      expect(current_path).to eq new_admin_item_path #new_admin_item_path
       fill_in "Title", with: "Mat"
       fill_in "Description", with: "Black"
       fill_in "Price", with: "50"

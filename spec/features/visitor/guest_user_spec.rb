@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "guest user can create cart" do
   scenario "they cannot checkout" do
+    item = create(:category_with_items, item_count: 1)
     item = create(:item)
     visit items_path
 
