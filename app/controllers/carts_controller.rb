@@ -10,11 +10,6 @@ class CartsController < ApplicationController
   end
 
   def index
-    @items = Hash.new
-    @subtotal = Hash.new
-    session[:cart].each do |k,v|
-      @items[Item.find(k)] = {:quantity => v, :subtotal => Item.find(k).price * v}
-    end
-
+    @items = @cart.find_quantity_subtotal
   end
 end
