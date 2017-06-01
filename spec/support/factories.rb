@@ -5,11 +5,11 @@ FactoryGirl.define do
 
     factory :category_with_items do
       transient do
-        item_count 5
+        items_count 5
       end
 
       after(:create) do |category, evaluator|
-        create_list(:item, evaluator.items_count, category: category)
+        category.items << create_list(:item, evaluator.items_count)
       end
     end
   end
@@ -24,7 +24,6 @@ FactoryGirl.define do
     price 100.00
     # image
     status 0
-    # categories
   end
 
   sequence :title do |n|

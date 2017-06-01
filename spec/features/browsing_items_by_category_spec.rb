@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "visitor can browse items by category" do
   scenario "they can see the page for a specific category" do
-    category = create(:category, name: "Surf")
-    item1 = create(:item, title: "Wetsuit", category: category)
-    item2 = create(:item, title: "Cold Weather Wax", category: category)
+    category = create(:category_with_items, items_count: 2)
+    item1 = category.items.first
+    item2 = category.items.last
 
     visit category_path(category)
 
