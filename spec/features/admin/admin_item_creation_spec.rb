@@ -6,26 +6,30 @@ RSpec.describe "item creation" do
       admin = create(:user, role: 1)
       create_list(:category, 2)
 
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+      visit login_path
+      fill_in "Username", with: admin.username
+      fill_in "Password", with: admin.password
+      click_on 'Login'
+      # allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-      visit "admin/dashboard"
+      visit admin_dashboard_path(admin)
       click_on "Add new item"
 
-      expect(current_path).to eq "admin/items/new" #new_admin_item_path
+      expect(current_path).to eq new_admin_item_path #new_admin_item_path
       fill_in "Title", with: "Mat"
       fill_in "Description", with: "Black"
       fill_in "Price", with: "50"
-      fill_in "Categories", with: "#{category.first.name}, #{category.last.name}"
-      fill_in "Status", with: "Active"
+      fill_in "Category list", with: "#{Category.all.first.name}, #{Category.all.last.name}"
+      select "active", from: "Status"
 
       click_on "Create Item"
       item = Item.find_by(title: "Mat")
 
-      expect(current_path).to eq(admin_item_path(item)) #"admin/items/#{item.id}"
+      expect(current_path).to eq(item_path(item)) #"admin/items/#{item.id}"
       expect(page).to have_content("Mat")
       expect(page).to have_content("Black")
       expect(page).to have_content("$50.00")
-      expect(page).to have_content("Active")  #by default
+      expect(page).to have_content("active")  #by default
       expect(page).to have_link('Edit Item')
     end
   end
