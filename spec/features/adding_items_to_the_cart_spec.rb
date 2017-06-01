@@ -60,9 +60,8 @@ RSpec.describe "visitor can add items and remove from the cart" do
     click_on("Remove")
 
     expect(current_path).to eq("/carts")
-    # expect(flash[:notice]).to have_css(".add_to_cart") # Double check
     expect(page).to have_content("Successfully removed #{item1.title} from your cart.")
-    expect(page).to have_link(item_path(item1))
+    expect(page).to have_link(item1.title, item_path(item1))
     expect(page).to_not have_css('h3', item1.title)
 
   end
