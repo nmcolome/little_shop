@@ -25,7 +25,7 @@ RSpec.describe "item creation" do
       click_on "Create Item"
       item = Item.find_by(title: "Mat")
 
-      expect(current_path).to eq(admin_item_path(item)) #"admin/items/#{item.id}"
+      expect(current_path).to eq(item_path(item)) #"admin/items/#{item.id}"
       expect(page).to have_content("Mat")
       expect(page).to have_content("Black")
       expect(page).to have_content("$50.00")
