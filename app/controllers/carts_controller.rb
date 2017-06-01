@@ -12,4 +12,11 @@ class CartsController < ApplicationController
   def index
     @items = @cart.find_quantity_subtotal
   end
+
+  def destroy
+    @item = Item.find(params[:item_id])
+    @cart.remove(@item.id)
+    flash[:notice] = "Successfully removed " + <%= link_to @item.title, item_path(@item) %> + " from your cart."
+    redirect_to :back
+  end
 end
