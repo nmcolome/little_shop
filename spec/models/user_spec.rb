@@ -35,7 +35,7 @@ RSpec.describe User do
                         city: "Squeevillia",
                         state: "Squeeorado",
                         zipcode: '80206',
-      role: 0)
+                        role: 0)
 
       expect(user).to be_invalid
     end

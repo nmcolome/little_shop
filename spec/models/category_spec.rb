@@ -21,4 +21,16 @@ RSpec.describe Category do
 
     expect(category2).to be_invalid
   end
+
+  context "has relationships" do
+    it "with items" do
+      category = create(:category)
+      item = category.items.create(title: "itemz",
+                            description: "greatest",
+                            price: 4,
+                            status: 0)
+
+    expect(category).to respond_to(:items)
+    end
+  end
 end
