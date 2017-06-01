@@ -37,9 +37,9 @@ RSpec.describe "visitor can add items and remove from the cart" do
     expect(page).to have_content(item2.description)
     expect(page).to have_content(item2.price)
     expect(page).to have_content("Quantity: 2")
-    # expect(page).to have_content(item1.order_items.quantity)
+    expect(page).to have_content("Subtotal: $200.00")
     # expect(page).to have_content(item2.order_items.quantity)
-    expect(page).to have_content("Total: #{item1.subtotal + item2.subtotal}")
+    expect(page).to have_content("Total: $300.00")
   end
 
   scenario "visitor starts with an item and removes" do
