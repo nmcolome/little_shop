@@ -33,8 +33,12 @@ FactoryGirl.define do
 
   factory :user do
     role 0
-    username 
-    email 'meatball_lover@puppy'
+    sequence :username do |n|
+      "user_#{n}"
+    end
+    sequence :email do |n|
+      "meatball_lover_#{n}@puppy"
+    end
     password 'meatball'
     address '2020 Lawrence st'
     first_name 'Zuzu'
@@ -54,9 +58,7 @@ FactoryGirl.define do
     end
   end
 
-  sequence :username do |n|
-    "user_#{n}"
-  end
+
 
   factory :order do
     status 'Paid'

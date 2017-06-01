@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170601010405) do
+ActiveRecord::Schema.define(version: 20170601164156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,27 +31,27 @@ ActiveRecord::Schema.define(version: 20170601010405) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string   "title"
-    t.string   "description"
-    t.decimal  "price"
-    t.integer  "status"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "title",                   null: false
+    t.string   "description",             null: false
+    t.decimal  "price",                   null: false
+    t.integer  "status",      default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "username"
+    t.string   "first_name",                  null: false
+    t.string   "last_name",                   null: false
+    t.string   "email",                       null: false
+    t.string   "username",                    null: false
     t.string   "password_digest"
-    t.string   "address"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zipcode"
-    t.integer  "role"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "address",                     null: false
+    t.string   "city",                        null: false
+    t.string   "state",                       null: false
+    t.string   "zipcode",                     null: false
+    t.integer  "role",            default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_foreign_key "item_categories", "categories"
