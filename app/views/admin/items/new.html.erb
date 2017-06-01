@@ -1,4 +1,17 @@
 <%= form_for [:admin, @item] do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.label :price %>
+  <%= f.text_field :price %>
+
+  <%= f.label :category_list %>
+  <%= f.text_field :category_list %>
+
+  <%= f.label :status %>
+  <%= f.collection_select(:status_id, .all, :id, :title) %>
+
 <% end %>
