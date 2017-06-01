@@ -22,9 +22,9 @@ FactoryGirl.define do
     title
     description 'Made in the Universe Space Area'
     price 100.00
-    image
+    # image
     status 'Active'
-    categories
+    # categories
   end
 
   sequence :title do |n|
@@ -33,15 +33,19 @@ FactoryGirl.define do
 
   factory :user do
     role 0
-    username
-    email 'meatball_lover@puppy'
-    password_digest 'meatball'
-    address_line '2020 Lawrence st'
+    sequence :username do |n|
+      "user_#{n}"
+    end
+    sequence :email do |n|
+      "meatball_lover_#{n}@puppy"
+    end
+    password 'meatball'
+    address '2020 Lawrence st'
     first_name 'Zuzu'
     last_name 'Thomas'
     state 'CO'
     city 'Denver'
-    zipcode 80205
+    zipcode '80205'
 
     factory :user_with_orders do
       transient do
@@ -54,9 +58,7 @@ FactoryGirl.define do
     end
   end
 
-  sequence :username do |n|
-    "user_#{n}"
-  end
+
 
   factory :order do
     status 'Paid'
