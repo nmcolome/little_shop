@@ -168,16 +168,47 @@ RSpec.describe User do
   end
 
   context "attributes are unique when necessary" do
-    xit "user must have an original username" do
-      user = create(:user)
-      user2 = create(:user, username: user.username)
-
+    it "user must have an original username" do
+      user = User.create(username: "Squeemish",
+                        first_name: "Squee",
+                        last_name: "Leigh",
+                        email: "Squee@squee.com",
+                        password: "Squee",
+                        address: "1 Squee Lane",
+                        city: "Squeevillia",
+                        state: "Squeeorado",
+                        zipcode: '80206')
+      user2 = User.create(username: "Squeemish",
+                        first_name: "Squee Jr",
+                        last_name: "Leigh Jr",
+                        email: "Squee@squeejr.com",
+                        password: "Squee",
+                        address: "2 Squee Lane",
+                        city: "Squeevillia Sister City",
+                        state: "Mississippi",
+                        zipcode: '80207')
       expect(user2).to be_invalid
     end
 
-    xit "user must have an original email" do
-      user = create(:user)
-      user2 = create(:user, email: user.email)
+    it "user must have an original email" do
+      user = User.create(username: "Squeemish",
+                        first_name: "Squee",
+                        last_name: "Leigh",
+                        email: "Squee@squee.com",
+                        password: "Squee",
+                        address: "1 Squee Lane",
+                        city: "Squeevillia",
+                        state: "Squeeorado",
+                        zipcode: '80206')
+      user2 = User.create(username: "Squeemish Jr",
+                        first_name: "Squee Jr",
+                        last_name: "Leigh Jr",
+                        email: "Squee@squee.com",
+                        password: "Squee",
+                        address: "2 Squee Lane",
+                        city: "Squeevillia Sister City",
+                        state: "Mississippi",
+                        zipcode: '80207')
 
       expect(user2).to be_invalid
     end
