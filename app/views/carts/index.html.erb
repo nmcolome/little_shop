@@ -1,0 +1,6 @@
+<% @items.each do |item, quantity| %>
+  <p>Product: <%= item.title %></p>
+  <p>Description: <%= item.description %></p>
+  <p>Price: $<%= item.price %></p>
+  <p>Quantity: <%= quantity %></p>
+<% end %>

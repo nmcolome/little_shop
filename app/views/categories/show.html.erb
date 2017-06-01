@@ -1,9 +1,14 @@
 <h1><%= @category.name %></h1>
 
+<%#Move to nav_bar%>
+<%= link_to "View Cart", carts_path %>%
+<%#Move to nav_bar%>
+
+
 <ul>
 <% @category.items.each do |item| %>
   <li><%= item.title %></li>
   <li><%= item.price %></li>
-  <li><%= link_to "Add to Cart", carts_path %></li>
+  <li><%= link_to "Add to Cart", carts_path(item_id: item.id), method: :post %></li>
 <% end %>
 </ul>
