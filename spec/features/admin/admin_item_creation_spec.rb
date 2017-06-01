@@ -20,7 +20,7 @@ RSpec.describe "item creation" do
       fill_in "Description", with: "Black"
       fill_in "Price", with: "50"
       fill_in "Category list", with: "#{Category.all.first.name}, #{Category.all.last.name}"
-      select "Active", from: "Status"
+      select "active", from: "Status"
 
       click_on "Create Item"
       item = Item.find_by(title: "Mat")

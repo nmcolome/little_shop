@@ -12,6 +12,6 @@
   <%= f.text_field :category_list %>
 
   <%= f.label :status %>
-  <%= f.collection_select(:status_id, .all, :id, :title) %>
+  <%= f.select :status, ["active", "retired"] %>
 
 <% end %>
