@@ -14,6 +14,10 @@ class Cart
     items
   end
 
+  def remove(item_id)
+    contents.delete(item_id.to_s)
+  end
+
   def total
     items = self.find_quantity_subtotal
     total = 0

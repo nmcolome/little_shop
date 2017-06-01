@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:show]
 
-  resources :carts, only: [:create, :index]
+  resources :carts, only: [:create, :index, :destroy]
 
   namespace :admin do
     resources :dashboards, only: [:show]

@@ -43,8 +43,8 @@ RSpec.describe "visitor can add items and remove from the cart" do
   end
 
   scenario "visitor starts with an item and removes" do
-    category = create(:category, name: "Surf")
-    item1 = create(:item, title: "Wetsuit", category: category)
+    category = create(:category_with_items, items_count: 1)
+    item1 = category.items.first
 
     visit category_path(category)
 
@@ -55,14 +55,13 @@ RSpec.describe "visitor can add items and remove from the cart" do
 
     click_on("View Cart")
 
-    expect(current_path).to eq("/cart")
+    expect(current_path).to eq("/carts")
 
     click_on("Remove")
 
-    expect(current_path).to eq("/cart")
-    expect(flash[:notice]).to have_css(".add_to_cart") # Double check
+    expect(current_path).to eq("/carts")
     expect(page).to have_content("Successfully removed #{item1.title} from your cart.")
-    expect(page).to have_link(item_path(item1))
+    expect(page).to have_link(item1.title, item_path(item1))
     expect(page).to_not have_css('h3', item1.title)
 
   end
