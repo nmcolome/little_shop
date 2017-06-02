@@ -29,12 +29,12 @@ RSpec.describe "visitor can visit the cart" do
     click_on("Add to Cart")
 
     click_on("View Cart")
-    expect(current_path).to eq("/cart")
+    expect(current_path).to eq("/carts")
     expect(page).to have_content("Quantity: 2")
-    select "1", :from => "Qty:"
-    expect(current_path).to eq("/cart")
+    click_on "-"
+    expect(current_path).to eq("/carts")
     expect(page).to have_content("Quantity: 1")
-    expect(page).to have_content("Subtotal: #{item1.price}")
-    expect(page).to have_content("Total: #{item1.price}")
+    expect(page).to have_content("Subtotal: $100.00")
+    expect(page).to have_content("Total: $100.00")
   end
 end

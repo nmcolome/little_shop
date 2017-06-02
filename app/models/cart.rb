@@ -28,7 +28,15 @@ class Cart
     # contents.values.sum
   end
 
-  def update_quantity(item_id)
+  def increase_quantity(item_id)
     contents[item_id.to_s] = (contents[item_id.to_s] || 0) + 1
+  end
+
+  def decrease_quantity(item_id)
+    if contents[item_id.to_s] == 0
+      self.remove(item_id)
+    else
+      contents[item_id.to_s] = contents[item_id.to_s] - 1
+    end
   end
 end
