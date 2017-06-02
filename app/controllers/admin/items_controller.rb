@@ -18,7 +18,20 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
+  end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+
+    flash.notice = "This item has now been edited"
+
+    redirect_to admin_item_path(@item)
   end
 
   private
