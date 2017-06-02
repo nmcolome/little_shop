@@ -33,7 +33,7 @@ class Cart
   end
 
   def decrease_quantity(item_id)
-    if contents[item_id.to_s] == 0
+    if contents[item_id.to_s] == 1
       self.remove(item_id)
     else
       contents[item_id.to_s] = contents[item_id.to_s] - 1
