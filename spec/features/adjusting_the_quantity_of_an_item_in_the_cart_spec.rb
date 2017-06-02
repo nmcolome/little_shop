@@ -53,6 +53,7 @@ RSpec.describe "visitor can visit the cart" do
 
     click_on "-"
     expect(page).to_not have_content "-"
+    expect(page).to_not have_content item1.description
     expect(current_path).to eq("/carts")
 
     expect(page).to have_content("Total: $0.00")
