@@ -1,0 +1,34 @@
+<%= form_for [:admin, @user] do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+
+  <%= f.label :city %>
+  <%= f.text_field :city %>
+
+  <%= f.label :state %>
+  <%= f.text_field :state %>
+
+  <%= f.label :zipcode %>
+  <%= f.text_field :zipcode %>
+
+  <%= f.label :role %>
+  <%= f.text_field :role %>
+
+  <%= f.submit "Update" %>
+
+<% end %>
