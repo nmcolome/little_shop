@@ -22,13 +22,19 @@ RSpec.describe "cannot edit another user" do
       expect(page).to_not have_content(user.email)
     end
 
-    xit "they cannot edit another user's profile" do
+    it "they can edit another user's role" do
       admin = create(:user, role: 1)
-      user = create(:user)
+      user = create(:user, first_name: "Natalia")
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit edit_user_path(user)
-      expect(page).to_not have_content(user.username)
-      expect(page).to have_content("The page you were looking for doesn't exist.")
+
+      select "admin", from: "user[role]"
+      click_on "Update Role"
+
+      expect(page).to have_content(user.username)
+      expect(user.role).to eq("admin")
     end
   end
 end
