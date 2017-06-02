@@ -33,8 +33,12 @@ RSpec.describe "cannot edit another user" do
       select "admin", from: "user[role]"
       click_on "Update Role"
 
+      expect(current_path).to eq edit_user_path(user)
       expect(page).to have_content(user.username)
-      expect(user.role).to eq("admin")
+      expect(page).to have_content("admin")
+      expect(page).to have_content "User role updated."
+      user.reload
+      expect(user.admin?).to be_truthy
     end
   end
 end
