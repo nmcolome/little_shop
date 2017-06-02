@@ -17,7 +17,7 @@ RSpec.describe "Authenticated user can log in" do
       expect(page).to have_content("Logged in as #{user.username}")
     end
     expect(current_path).to eq('/dashboard')
-    expect(page).to have_content("Hello, #{user.name}")
+    expect(page).to have_content("Hello, #{user.first_name}")
     expect(page).to have_content("Logout")
     expect(page).to_not have_content("Login")
   end
@@ -31,7 +31,7 @@ RSpec.describe "Authenticated user can log in" do
     fill_in "Password", with: user.password
     click_button "Login"
 
-    expect(page).to have_content("Login to your account.")
+    expect(page).to have_content("Login")
     expect(page).to have_content("Incorrect username or password")
   end
 
@@ -44,7 +44,7 @@ RSpec.describe "Authenticated user can log in" do
     fill_in "Password", with: "Meatballz"
     click_button "Login"
 
-    expect(page).to have_content("Login to your account.")
+    expect(page).to have_content("Login")
     expect(page).to have_content("Incorrect username or password")
   end
 end
