@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   resources :carts, only: [:create, :index]
 
   namespace :admin do
-    resources :dashboards, only: [:show]
+    get '/dashboard', to: 'dashboards#index'
+    resources :dashboards, only: [:show, :index]
     resources :items, only: [:new, :create, :edit]
   end
 end
