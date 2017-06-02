@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:show]
 
-  resources :carts, only: [:create, :index, :destroy]
+  resources :carts, only: [:create, :index, :destroy, :update]
 
   namespace :admin do
     get '/dashboard', to: 'dashboards#index'
