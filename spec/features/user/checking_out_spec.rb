@@ -13,6 +13,7 @@ RSpec.describe "A registered user can checkout items in their cart" do
 
       expect(current_path).to eq login_path
     end
+  end
 
   scenario "as a registered user" do
     user = create(:user)

@@ -10,10 +10,10 @@ class SessionsController < ApplicationController
       if current_user.admin?
         redirect_to '/admin/dashboard'
       else
-        redirect_to @user
+        redirect_to '/dashboard'
       end
     else
-      #incorrect user or password
+      redirect_to '/login', alert: "Incorrect username or password"
     end
   end
 end
