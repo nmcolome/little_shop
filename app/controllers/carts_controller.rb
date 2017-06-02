@@ -3,10 +3,10 @@ class CartsController < ApplicationController
 
   def create
     @item = Item.find(params[:item_id])
-    @cart.update_quantity(@item.id)
+    @cart.increase_quantity(@item.id)
     session[:cart] = @cart.contents
     flash[:notice] = "You now have #{pluralize(session[:cart][@item.id.to_s], @item.title)}."
-    redirect_back(fallback_location: items_path)
+    redirect_to request.referrer
   end
 
   def index
@@ -18,5 +18,13 @@ class CartsController < ApplicationController
     @cart.remove(@item.id)
     flash[:notice] = "Successfully removed #{view_context.link_to(@item.title, item_path(@item))} from your cart.".html_safe
     redirect_back(fallback_location: items_path)
+  end
+
+  def update
+    @item = Item.find(params[:item_id])
+    @cart.decrease_quantity(@item.id)
+    session[:cart] = @cart.contents
+    flash[:notice] = "You now have #{pluralize(session[:cart][@item.id.to_s], @item.title)}."
+    redirect_to request.referrer
   end
 end
