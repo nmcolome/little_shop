@@ -52,7 +52,7 @@ RSpec.describe "visitor can visit the cart" do
     expect(page).to have_content item1.title
 
     click_on "-"
-    expect(page).to_not have_content "-"
+    expect(page).to_not have_button "-"
     expect(page).to_not have_content item1.description
     expect(current_path).to eq("/carts")
 
