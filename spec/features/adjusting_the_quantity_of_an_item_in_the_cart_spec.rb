@@ -25,7 +25,7 @@ RSpec.describe "visitor can visit the cart" do
 
     visit category_path(category)
 
-    click_on("Add to Cart")  ### Is this how we want to select 2 items
+    click_on("Add to Cart")
     click_on("Add to Cart")
 
     click_on("View Cart")
@@ -36,5 +36,25 @@ RSpec.describe "visitor can visit the cart" do
     expect(page).to have_content("Quantity: 1")
     expect(page).to have_content("Subtotal: $100.00")
     expect(page).to have_content("Total: $100.00")
+  end
+
+  scenario "when they decrease the quantity of an item to 0 it is removed from their cart" do
+    category = create(:category_with_items, items_count: 1)
+    item1 = category.items.first
+
+    visit category_path(category)
+
+    click_on("Add to Cart")
+
+    click_on("View Cart")
+    expect(current_path).to eq("/carts")
+    expect(page).to have_content("Quantity: 1")
+    expect(page).to have_content item1.title
+
+    click_on "-"
+    expect(page).to_not have_content "-"
+    expect(current_path).to eq("/carts")
+
+    expect(page).to have_content("Total: $0.00")
   end
 end
