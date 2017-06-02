@@ -2,7 +2,15 @@
   <p>Product: <%= item.title %></p>
   <p>Description: <%= item.description %></p>
   <p>Price: $<%= number_with_precision(item.price, :precision => 2) %></p>
-  <p>Quantity: <%= values[:quantity] %></p>
+  <p>Quantity: <%= values[:quantity] %>
+  <%= button_to "+", carts_path(item_id: item.id) %>
+  <%= button_to "-", carts_path(item_id: item.id), method: "put" %></p>
+  <%#= button_to %>
+  <%#= form_for @cart.contents.values, method: "patch" do |f| %>
+    <%#= f.number_field :quantity %>
+    <%#= f.select values[:quantity], options_for_select(0..30), {prompt: "Change Quantity"} %>
+  <%# end %>
+
   <p>Subtotal: $<%= number_with_precision(values[:subtotal], :precision => 2) %></p>
 
   <p><%= link_to "Remove", cart_path(@cart, item_id: item.id), method: :delete %>
