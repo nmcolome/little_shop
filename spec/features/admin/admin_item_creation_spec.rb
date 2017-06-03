@@ -9,16 +9,9 @@ RSpec.describe "item creation" do
       visit login_path
       fill_in "Username", with: admin.username
       fill_in "Password", with: admin.password
-<<<<<<< HEAD
+
       click_on(class: 'login-submit')
 
-=======
-
-      click_button 'Login'
-      # allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
-
-      visit admin_dashboard_path(admin)
->>>>>>> fix typos in tests
       click_on "Add new item"
 
       expect(current_path).to eq new_admin_item_path #new_admin_item_path
@@ -54,6 +47,7 @@ RSpec.describe "item creation" do
 
   context "as visitor" do
     it "they can't see the page" do
+
       visit "admin/items/new"
 
       expect(page).to_not have_content("Create Item")
