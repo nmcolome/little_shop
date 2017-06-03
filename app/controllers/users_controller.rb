@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
 before_action :is_correct_user, only: [:edit, :update]
 
   def new
