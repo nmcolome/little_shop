@@ -18,7 +18,7 @@
 
 <% @orders.each do |order| %>
   <%= link_to "Order #{order.id}, #{order.user.username}", user_order_path(order.user, order) %>
-  <%= form_for order, url: admin_dashboard_path(current_user), method: "PUT" do |f| %>
+  <%= form_for order, url: admin_dashboard_path(id: order.id), method: "PUT" do |f| %>
     <%= f.label "Update Order Status: " %>
     <%= f.select :status, ["Ordered", "Paid", "Cancelled", "Completed"] %>
     <%= f.submit "Update Status" %>
