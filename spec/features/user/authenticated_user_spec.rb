@@ -5,13 +5,13 @@ RSpec.describe "Authenticated user can log in" do
     user = create(:user)
     visit root_path
 
-    click_link "Login"
+    click_on 'Login'
 
     expect(current_path).to eq(login_path)
 
     fill_in "Username", with: user.username
     fill_in "Password", with: user.password
-    click_button "Login"
+    click_button 'Login'
 
     within '.navbar' do
       expect(page).to have_content("Logged in as #{user.username}")
@@ -29,7 +29,7 @@ RSpec.describe "Authenticated user can log in" do
 
     fill_in "Username", with: "ThisIsNotMyName"
     fill_in "Password", with: user.password
-    click_button "Login"
+    click_button 'Login'
 
     expect(page).to have_content("Login")
     expect(page).to have_content("Incorrect username or password")

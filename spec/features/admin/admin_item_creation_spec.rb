@@ -9,6 +9,7 @@ RSpec.describe "item creation" do
       visit login_path
       fill_in "Username", with: admin.username
       fill_in "Password", with: admin.password
+
       click_on(class: 'login-submit')
 
       click_on "Add new item"
