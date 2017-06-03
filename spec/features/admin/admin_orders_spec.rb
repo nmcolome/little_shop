@@ -67,30 +67,36 @@ RSpec.describe "orders view" do
       expect(order.status).to eq('Cancelled')
     end
 
-  #   it "ordered orders can be marked as paid" do
-  #     admin = create(:user, role: 1)
-  #     order = create(:order, status: "ordered")
-  #
-  #     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
-  #
-  #     visit "admin/dashboard" #new_admin_item_path
-  #
-  #     expect(page).to have_link("Order #{order.id}") ##change this - what are we naming each order?
-  #     select "Paid", from: "order[status]"
-  #     expect(order.status).to eq('paid')
-  #   end
-  #
-  #   it "paid orders can be marked as completed" do
-  #     admin = create(:user, role: 1)
-  #     order = create(:order, status: "paid")
-  #
-  #     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
-  #
-  #     visit "admin/dashboard" #new_admin_item_path
-  #
-  #     expect(page).to have_link("Order #{order.id}") ##change this - what are we naming each order?
-  #     select "Completed", from: "order[status]"
-  #     expect(order.status).to eq('completed')
-  #   end
+    it "ordered orders can be marked as paid" do
+      admin = create(:user, role: 1)
+      user = create(:user)
+      order = create(:order, user_id: user.id, status: "Ordered")
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit "admin/dashboard" #new_admin_item_path
+
+      expect(page).to have_link("Order #{order.id}") ##change this - what are we naming each order?
+      select "Paid", from: "order[status]"
+      click_on "Update Status"
+      order.reload
+      expect(order.status).to eq('Paid')
+    end
+
+    it "paid orders can be marked as completed" do
+      admin = create(:user, role: 1)
+      user = create(:user)
+      order = create(:order, user_id: user.id, status: "Paid")
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit "admin/dashboard" #new_admin_item_path
+
+      expect(page).to have_link("Order #{order.id}") ##change this - what are we naming each order?
+      select "Completed", from: "order[status]"
+      click_on "Update Status"
+      order.reload
+      expect(order.status).to eq('Completed')
+    end
   end
 end
