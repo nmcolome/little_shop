@@ -10,7 +10,4 @@ class Order < ActiveRecord::Base
       total += item.cart_subtotal(self)
     end
   end
-
-  def status_count
-  end
 end

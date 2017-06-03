@@ -10,10 +10,10 @@
 
 <h5>Order Status Summaries</h5>
 <ul>
-  <li>Ordered: <%= @orders.status_count("Ordered") %></li>
-  <li>Paid: <%=  %></li>
-  <li>Cancelled: <%=  %></li>
-  <li>Completed: <%=  %></li>
+  <li>Ordered: <%= @orders.where(status: "Ordered").count %></li>
+  <li>Paid: <%= @orders.where(status: "Paid").count %></li>
+  <li>Cancelled: <%= @orders.where(status: "Cancelled").count %></li>
+  <li>Completed: <%= @orders.where(status: "Completed").count %></li>
 </ul>
 
 <% @orders.each do |order| %>
