@@ -9,14 +9,13 @@ RSpec.describe "items view" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-      visit "/admin/dashboard"
+      visit admin_dashboard_path(admin)
       click_on "View All Items"
 
       expect(current_path).to eq(admin_items_path) #"/admin/items"
       expect(page).to have_content(item1.title)
       expect(page).to have_content(item3.title)
       expect(page).to have_content(item3.price)
-      # expect(page).to have_content(item3.image)
       expect(page).to have_content(item3.status)
       expect(page).to have_content(item2.status)
       expect(page).to have_content(item2.price)
