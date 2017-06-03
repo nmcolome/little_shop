@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
 
-  resources :users, only: [:create, :new, :edit, :update]
+  resources :users, only: [:create, :new, :edit, :update] do
+    resources :orders, only: [:show]
+  end
   get '/dashboard', to: 'users#show'
 
   resources :items, only: [:show, :index]
@@ -15,6 +17,7 @@ Rails.application.routes.draw do
   resources :carts, only: [:create, :index, :destroy, :update]
 
   get 'admin/dashboard', to: 'admin/dashboard#show'
+  put 'admin/dashboard', to: 'admin/dashboard#update'
 
   namespace :admin do
     resources :dashboard, only: [:edit]
