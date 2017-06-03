@@ -8,7 +8,7 @@ RSpec.describe "As an admin" do
 
     fill_in "Username", with: admin.username
     fill_in "Password", with: admin.password
-    click_button "Login"
+    click_button 'Login'
 
     expect(current_path).to eq '/admin/dashboard'
     expect(page).to have_content "Admin Dashboard"
