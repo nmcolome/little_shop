@@ -8,7 +8,7 @@ RSpec.describe "user edits an item" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-      visit "/admin/dashboard"
+      visit admin_dashboard_path(admin)
       click_on "View All Items"
       expect(current_path).to eq(admin_items_path)
       click_on "Edit Item"
