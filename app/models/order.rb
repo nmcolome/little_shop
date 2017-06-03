@@ -4,6 +4,8 @@ class Order < ActiveRecord::Base
   belongs_to :user
 
   def total
-    items.sum(&:price)
+    items.reduce(0) do |total, item|
+      total += item.cart_subtotal(self)
+    end
   end
 end
