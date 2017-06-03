@@ -29,4 +29,12 @@ class Item < ApplicationRecord
   def get_quantity(order)
     order.order_items.find_by(item_id: self.id).quantity
   end
+
+  def cart_subtotal(order)
+    self.get_quantity(order) * self.price
+  end
+
+  def get_quantity(order)
+    order.order_items.find_by(item_id: self.id).quantity
+  end
 end
