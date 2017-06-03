@@ -8,6 +8,14 @@
 
 <%= link_to "Add new item", new_admin_item_path %><br />
 
+<h5>Order Status Summaries</h5>
+<ul>
+  <li>Ordered: <%= @orders.status_count("Ordered") %></li>
+  <li>Paid: <%=  %></li>
+  <li>Cancelled: <%=  %></li>
+  <li>Completed: <%=  %></li>
+</ul>
+
 <% @orders.each do |order| %>
   <%= link_to "Order #{order.id}, #{order.user.username}", user_order_path(order.user, order) %>
 <% end %>
