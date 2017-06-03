@@ -9,7 +9,7 @@ RSpec.describe "cannot edit another user" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
 
-      visit "admin/dashboard" #I can see my profile
+      visit admin_dashboard_path(admin) #I can see my profile
       expect(page).to have_content (admin.username)
       expect(page).to_not have_content (user.username)
 
