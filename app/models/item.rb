@@ -22,10 +22,6 @@ class Item < ApplicationRecord
     end.join(", ")
   end
 
-  def subtotal
-    Item.sum(:price)
-  end
-
   def cart_subtotal(order)
     self.get_quantity(order) * self.price
   end
