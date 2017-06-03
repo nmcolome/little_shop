@@ -4,6 +4,11 @@
   <li>Description: <%= @item.description %></li>
   <li>Price: $<%= number_with_precision(@item.price, :precision => 2) %></li>
   <li>Status: <%= @item.status %></li>
+  <% if @item.active? %>
+    <li><%= link_to "Add to Cart", carts_path(item_id: @item.id), method: :post %></li>
+  <% else %>
+    <li><h2>Item Retired</h2></li>
+  <% end %>
 </ul>
 
 <% if current_user.role == 'admin' %>
