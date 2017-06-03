@@ -2,6 +2,10 @@
 <% @items.each do |item| %>
   <li><%= item.title %></li>
   <li><%= item.price %></li>
-  <li><%= link_to "Add to Cart", carts_path(item_id: item.id), method: :post %></li>
+  <% if item.active? %>
+    <li><%= link_to "Add to Cart", carts_path(item_id: item.id), method: :post %></li>
+  <% else %>
+    <li>Item Retired</li>
+  <% end %>
 <% end %>
 </ul>
