@@ -5,6 +5,8 @@ class Item < ApplicationRecord
 
   has_many :item_categories
   has_many :categories, through: :item_categories
+  has_many :order_items
+  has_many :orders, through: :order_items
 
   enum status: ["active", "retired"]
 
@@ -22,5 +24,13 @@ class Item < ApplicationRecord
 
   def subtotal
     Item.sum(:price)
+  end
+
+  def cart_subtotal(order)
+    self.get_quantity(order) * self.price
+  end
+
+  def get_quantity(order)
+    order.order_items.find_by(item_id: self.id).quantity
   end
 end

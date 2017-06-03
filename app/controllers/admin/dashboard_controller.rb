@@ -5,7 +5,7 @@ class Admin::DashboardController < Admin::BaseController
   end
 
   def show
-
+    @orders = Order.all
   end
 
   def edit

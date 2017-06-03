@@ -7,3 +7,7 @@
 <%= link_to "Edit my Profile", edit_admin_dashboard_path(current_user) %><br />
 
 <%= link_to "Add new item", new_admin_item_path %><br />
+
+<% @orders.each do |order| %>
+  <%= link_to "Order #{order.id}, #{order.user.username}", user_order_path(order.user, order) %>
+<% end %>
