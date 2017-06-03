@@ -5,7 +5,7 @@ RSpec.describe "When a user visits an administrator's dashboard" do
     admin = create(:user, role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-    visit '/admin/dashboard'
+    visit admin_dashboard_path(admin)
     expect(page).to have_content "Admin Dashboard"
   end
 
@@ -13,12 +13,13 @@ RSpec.describe "When a user visits an administrator's dashboard" do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit '/admin/dashboard'
+    visit admin_dashboard_path(user)
     expect(page).to have_content "The page you were looking for doesn't exist."
   end
 
   it "as an unregistered user" do
-    visit '/admin/dashboard'
+    guest = "guest"
+    visit admin_dashboard_path(guest)
     expect(page).to have_content "The page you were looking for doesn't exist."
   end
 end
