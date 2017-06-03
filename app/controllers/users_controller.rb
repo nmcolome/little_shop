@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+before_action :is_correct_user, only: [:edit, :update]
+
   def new
     @user = User.new
   end
@@ -16,7 +18,8 @@ class UsersController < ApplicationController
   end
 
   def show
-
+    #binding.pry
+    #if current_user
   end
 
   def edit
