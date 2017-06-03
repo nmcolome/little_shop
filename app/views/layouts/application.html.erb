@@ -10,6 +10,7 @@
 
   <body>
     <nav class='navbar'>
+      <h2> <%= link_to "View Cart", carts_path %> </h2>
       <% if current_user %>
         Logged in as <%= current_user.username %><br />
         <%= link_to "Logout", logout_path %>
