@@ -31,21 +31,22 @@ RSpec.describe "orders view" do
       expect(page).to have_content("Cancelled: 1")
       expect(page).to have_content("Completed: 1")
       expect(page).to have_link("Order #{Order.all.first.id}")
-      expect(page).to have_select("status", options: ["Ordered", "Paid", "Cancelled", "Completed"]) #this is the filter
+      save_and_open_page
+      expect(page).to have_select("order[status]", options: ["Ordered", "Paid", "Cancelled", "Completed"]) #this is the filter
     end
 
-  #   it "paid or ordered orders can be cancelled" do
-  #     admin = create(:user, role: 1)
-  #     order = create(:order, status: "paid")
-  #
-  #     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
-  #
-  #     visit "admin/dashboard" #new_admin_item_path
-  #
-  #     expect(page).to have_link("Order #{order.id}") ##change this - what are we naming each order?
-  #     select "Cancel", from: "order[status]"
-  #     expect(order.status).to eq('cancelled')
-  #   end
+    it "paid or ordered orders can be cancelled" do
+      admin = create(:user, role: 1)
+      order = create(:order, status: "paid")
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit "admin/dashboard" #new_admin_item_path
+
+      expect(page).to have_link("Order #{order.id}") ##change this - what are we naming each order?
+      select "Cancel", from: "order[status]"
+      expect(order.status).to eq('cancelled')
+    end
   #
   #   it "paid or ordered orders can be cancelled" do
   #     admin = create(:user, role: 1)

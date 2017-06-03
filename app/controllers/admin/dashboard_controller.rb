@@ -1,9 +1,4 @@
 class Admin::DashboardController < Admin::BaseController
-
-  def index
-
-  end
-
   def show
     @orders = Order.all
   end
