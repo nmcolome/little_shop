@@ -22,23 +22,22 @@ RSpec.describe "An unauthenticated user" do
     expect(page).to have_content item.title
     expect(page).to have_content item.price
 
-    click_on "Checkout"
+    click_on "Login or Create Account to Checkout"
 
-    expect(page).to have_content "You must login to checkout"
     expect(page).to have_content "Login"
-    expect(page).to have_content "Create Account"
+    expect(current_path).to eq(login_path)
+    expect(page).to have_link("Create Account", href: new_user_path)
 
-    click_link "Login"
     fill_in "Username", with: user.username
     fill_in "Password", with: user.password
     click_button "Login"
 
     expect(page).to have_content user.username
-    click_link "Cart"
+    click_link "View Cart"
 
-    expect(page).to have_content item.name
+    expect(page).to have_content item.title
     expect(page).to have_content item.price
-    expect(page).to has_css('img', "") ####fix this with an image source
+    # expect(page).to has_css('img', "") ####fix this with an image source
   end
 
   # it "cannot view the administrator screens" do
