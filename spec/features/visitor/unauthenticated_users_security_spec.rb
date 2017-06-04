@@ -40,13 +40,17 @@ RSpec.describe "An unauthenticated user" do
     # expect(page).to has_css('img', "") ####fix this with an image source
   end
 
-  # it "cannot view the administrator screens" do
-  #   visit '/admin/dashboard'
-  #   expect(page).to_not have_content "Admin Dashboard"
-  #   expect(page).to have_content "The page you were looking for doesn't exist."
-  # end
-  #
-  # it "cannot make themselves an administrator" do
-  #
-  # end
+  it "cannot view the administrator screens" do
+    visit '/admin/dashboard'
+    expect(page).to_not have_content "Admin Dashboard"
+    expect(page).to have_content "The page you were looking for doesn't exist."
+  end
+
+  it "cannot make themselves an administrator" do
+    visit 'dashboard'
+
+    expect(page).to_not have_content "Hello"
+    expect(page).to_not have_content("Update Role")
+    expect(page).to_not have_content("default")
+  end
 end
