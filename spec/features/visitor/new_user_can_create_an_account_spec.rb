@@ -25,7 +25,6 @@ RSpec.describe "visitor can create an account" do
     fill_in "State", with: "CO"
     fill_in "City", with: "Zuzu"
     fill_in "Zipcode", with: "80120"
-    #save_and_open_page
     #fill_in "Password Confirm", with: "meatball"
 
     click_button "Create Account"
