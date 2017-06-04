@@ -29,7 +29,7 @@
 
   <% @order.items.each do |item| %>
     <tr>
-      <td><%= item.title %></td>
+      <td><%= link_to "#{item.title}", item_path(item) %></td>
       <td><%= item.get_quantity(@order) %></td>
       <td>$<%= number_with_precision(item.price, :precision => 2) %></td>
       <td>$<%= number_with_precision(item.cart_subtotal(@order), :precision => 2) %></td>
