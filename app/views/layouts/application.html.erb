@@ -13,6 +13,11 @@
       <h2> <%= link_to "View Cart", carts_path %> </h2>
       <% if current_user %>
         Logged in as <%= current_user.username %><br />
+        <% if current_admin? %>
+          <%= link_to "My Account", '/admin/dashboard' %>
+        <% else %>
+          <%= link_to "My Account", '/dashboard' %>
+        <% end %>
         <%= link_to "Logout", logout_path, method: :delete %>
       <% else %>
         <%= link_to "Login", login_path %>

@@ -1,1 +1,5 @@
-<h3>Hello, <%= current_user.first_name %></h3>
+<% if current_user %>
+  <h3>Hello, <%= current_user.first_name %></h3>
+<% else %>
+  The page you were looking for doesn't exist.
+<% end %>
