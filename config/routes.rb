@@ -6,8 +6,9 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:create, :new, :edit, :update] do
-    resources :orders, only: [:show]
+    resources :orders, only: [:show, :new, :create]
   end
+  get '/orders', to: 'orders#index'
   get '/dashboard', to: 'users#show'
 
   resources :items, only: [:show, :index]
