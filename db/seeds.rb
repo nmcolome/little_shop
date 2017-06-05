@@ -30,3 +30,11 @@ admin = User.create(first_name: "admin",
             zipcode: Faker::Address.zip_code,
             role: 1)
 puts "You created an admin!"
+
+category = Category.create(name: "droid")
+25.times do
+  item = category.items.create(title: Faker::StarWars.droid,
+                              description: Faker::StarWars.quote,
+                              price: [40.00..5000.00].sample)
+  puts "#{item.title} was created in #{category.name}"
+end
