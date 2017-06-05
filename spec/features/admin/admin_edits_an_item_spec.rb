@@ -44,7 +44,7 @@ RSpec.describe "user edits an item" do
 
       expect(page).to_not have_content("Edit")
       expect(page).to_not have_content("Submit")
-      # expect(page).to have_content("The page you were looking for doesn't exist.")
+      expect(page).to have_content("The page you were looking for doesn't exist.")
     end
   end
 end

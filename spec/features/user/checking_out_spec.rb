@@ -49,8 +49,9 @@ RSpec.describe "A registered user can checkout items in their cart" do
 
     expect(current_path).to eq '/orders'
     expect(page).to have_content "Order was successfully placed"
-    expect(page).to have_css('td', item1.title)
+    # within('td')
+    page.has_css?('td', text: item1.title)
+    page.has_css?('td', text: item1.price)
     # expect(page).to have_css('td', item.image)
-    expect(page).to have_css('td', item1.price)
   end
 end

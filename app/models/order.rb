@@ -6,6 +6,7 @@ class Order < ActiveRecord::Base
   enum status: ["Ordered", "Paid", "Cancelled", "Completed"]
 
   def total
+    binding.pry
     items.reduce(0) do |total, item|
       total += item.cart_subtotal(self)
     end
