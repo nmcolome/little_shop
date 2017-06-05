@@ -1,0 +1,9 @@
+<h1><%= @category.name %></h1>
+
+  <ul>
+<% @category.items.each do |item| %>
+  <li><%= item.title %></li>
+  <li><%= item.price %></li>
+  <li><%= link_to "Add to Cart", carts_path(item_id: item.id), method: :post %></li>
+<% end %>
+</ul>
