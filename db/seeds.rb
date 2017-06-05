@@ -69,7 +69,6 @@ class Seeds
       user = User.find(x+1)
       3.times do |i|
         order = user.orders.create(status: (0..3).to_a.sample)
-        # item_number = (1..75).to_a.sample
         quantity = (1..5).to_a.sample
         OrderItem.create(item_id: (1..75).to_a.sample, quantity: quantity, order_id: order.id)
         OrderItem.create(item_id: (1..75).to_a.sample, quantity: quantity, order_id: order.id)
