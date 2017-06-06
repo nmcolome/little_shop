@@ -10,7 +10,7 @@ RSpec.describe "user edits an item" do
 
       visit admin_dashboard_path(admin)
       click_on "View All Items"
-      expect(current_path).to eq(admin_items_path)
+      expect(current_path).to eq(items_path)
       click_on "Edit Item"
 
       expect(current_path).to eq(edit_admin_item_path(item1)) #"/admin/items/:ITEM_ID/edit"
