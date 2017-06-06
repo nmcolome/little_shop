@@ -18,6 +18,7 @@ RSpec.describe "Authenticated user can log in" do
     end
     expect(current_path).to eq('/dashboard')
     expect(page).to have_content("Hello, #{user.first_name}")
+
     expect(page).to have_content("Logout")
     expect(page).to_not have_content("Login")
   end

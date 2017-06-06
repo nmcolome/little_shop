@@ -59,7 +59,19 @@ FactoryGirl.define do
 
   factory :order do
     status 0
-    item 3
-    date_time
+    user
+    # item 3
+
+    factory :order_with_items do
+      transient do
+        items_count 5
+      end
+
+      after(:create) do |order, evaluator|
+        order.items << create_list(:item, evaluator.items_count)
+      end
+    end
   end
+
+
 end

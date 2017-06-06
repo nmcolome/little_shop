@@ -3,7 +3,6 @@ class Cart
 
   def initialize(contents)
     @contents = contents || {}
-    # @items = {}
   end
 
   def find_quantity_subtotal
@@ -20,12 +19,9 @@ class Cart
 
   def total
     items = self.find_quantity_subtotal
-    total = 0
-    items.values.each do |item|
+    items.values.reduce(0) do |total, item|
       total += item[:subtotal]
     end
-    total
-    # contents.values.sum
   end
 
   def increase_quantity(item_id)
@@ -33,10 +29,16 @@ class Cart
   end
 
   def decrease_quantity(item_id)
-    if contents[item_id.to_s] == 1
+    if only_one_item?(item_id)
       self.remove(item_id)
     else
       contents[item_id.to_s] = contents[item_id.to_s] - 1
     end
+  end
+
+  private
+
+  def only_one_item?(item_id)
+    contents[item_id.to_s] == 1
   end
 end

@@ -5,8 +5,10 @@
   <%= f.text_field :username %> <br>
 
   <%= f.label :password %>
-  <%= f.text_field :password %> <br>
+  <%= f.password_field :password %> <br>
 
   <%= f.submit "Login", class: 'login-submit' %>
 
 <% end %>
+
+<h2>Don't have an account? <%= link_to "Create Account", new_user_path %></h2>
