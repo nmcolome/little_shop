@@ -12,10 +12,6 @@ class Admin::ItemsController < Admin::BaseController
       render :new, notice: "Incorrect information. Please try again."
     end
   end
-  #
-  # def show
-  #   @item = Item.find(params[:id])
-  # end
 
   def edit
     @item = Item.find(params[:id])
