@@ -7,7 +7,7 @@ RSpec.describe "visit individual order" do
       user = create(:user)
       item = create(:item)
       order1 = create(:order, user_id: user.id)
-      OrderItem.create(item_id: item.id, order_id: order1.id, quantity: 1)
+      OrderItem.create(item_id: item.id, order_id: order1.id, quantity: 1, price_at_purchase: 100.00)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -41,8 +41,8 @@ RSpec.describe "visit individual order" do
       item = create(:item)
       item2 = create(:item)
       order1 = create(:order, user_id: user.id)
-      OrderItem.create(item_id: item.id, order_id: order1.id, quantity: 1)
-      OrderItem.create(item_id: item2.id, order_id: order1.id, quantity: 2)
+      OrderItem.create(item_id: item.id, order_id: order1.id, quantity: 1, price_at_purchase: 100.00)
+      OrderItem.create(item_id: item2.id, order_id: order1.id, quantity: 2, price_at_purchase: 100.00)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
