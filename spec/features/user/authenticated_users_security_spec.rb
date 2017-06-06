@@ -24,18 +24,19 @@ RSpec.describe "An authenticated regular user" do
   it "cannot view the administrator screens or use admin functionality" do
     user = create(:user, first_name: "Natalia")
     user2 = create(:user, first_name: "Mogley")
-    visit login_path
+    item = create(:item)
 
+    visit login_path
     fill_in "Username", with: user2.username
     fill_in "Password", with: user2.password
     click_button "Login"
+
     visit '/admin/dashboard'
-    item = create(:item)
 
     expect(page).to_not have_content "Admin Dashboard"
     expect(page).to have_content "The page you were looking for doesn't exist."
 
-    visit admin_item_path(item)
+    visit edit_admin_item_path(item)
     expect(page).to have_content "The page you were looking for doesn't exist."
 
     visit new_admin_item_path
