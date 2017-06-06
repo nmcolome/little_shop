@@ -12,7 +12,7 @@ RSpec.describe "items view" do
       visit admin_dashboard_path(admin)
       click_on "View All Items"
 
-      expect(current_path).to eq(admin_items_path) #"/admin/items"
+      expect(current_path).to eq(items_path) #"/admin/items"
       expect(page).to have_content(item1.title)
       expect(page).to have_content(item3.title)
       expect(page).to have_content(item3.price)
