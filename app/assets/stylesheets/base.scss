@@ -1,0 +1,24 @@
+// @import url('https://fonts.googleapis.com/css?family=Lora|Muli');
+
+// $font-serif: 'Lora', serif;
+$font-sans: "Avenir Next", sans-serif;
+
+$light: #F4F4F4;
+$dark: #696969;
+$accent: #FEC007;
+$light-text: #F4F4F4;
+$primary-text: #212121;
+$second-text: #757575;
+$divider: #BCBCBC;
+
+* {
+	// border: 1px solid red;
+}
+
+* {
+  font-family: $font-sans;
+}
+
+body {
+  background-color: #EDEDED;
+}
