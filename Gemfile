@@ -18,6 +18,11 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
 
 
+gem 'paperclip', '~> 5.0.0'
+
+# Use Capistrano for deployment
+# gem 'capistrano-rails', group: :development
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end
