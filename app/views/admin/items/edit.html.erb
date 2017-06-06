@@ -14,6 +14,9 @@
   <%= f.label :status %>
   <%= f.select :status, ["active", "retired"] %>
 
+  <%= f.label :image_att, "Attach Image" %>
+  <%= f.file_field :image_att %>
+
   <%= f.submit "Submit" %>
 
 <% end %>
