@@ -59,6 +59,7 @@ FactoryGirl.define do
 
   factory :order do
     status 0
+    user
     # item 3
 
     factory :order_with_items do

@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "User views a single order" do
   scenario "user can view an order that belongs to them" do
+    binding.pry
       user = create(:user)
       order = Order.create(user_id: user.id)
       item_1 = create(:item)
