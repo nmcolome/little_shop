@@ -10,15 +10,15 @@ $light-text: #F4F4F4;
 $primary-text: #212121;
 $second-text: #757575;
 $divider: #BCBCBC;
+$background: #EDEDED;
 
 * {
 	// border: 1px solid red;
-}
-
-* {
+  color: $primary-text;
   font-family: $font-sans;
+  text-decoration: none;
 }
 
 body {
-  background-color: #EDEDED;
+  background-color: $background;
 }
