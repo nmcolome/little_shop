@@ -1,6 +1,6 @@
 <ul>
 <% @items.each do |item| %>
-  <li><%= item.title %></li>
+  <li><%= link_to item.title, item_path(item) %></li>
   <li><%= item.price %></li>
   <% if item.active? %>
     <li><%= link_to "Add to Cart", carts_path(item_id: item.id), method: :post %></li>
