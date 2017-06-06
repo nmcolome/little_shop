@@ -8,7 +8,6 @@ RSpec.describe "visit individual order" do
       item = create(:item)
       order1 = create(:order, user_id: user.id)
       OrderItem.create(item_id: item.id, order_id: order1.id, quantity: 1, price_at_purchase: 100.00)
-
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit "admin/dashboard" #new_admin_item_path
