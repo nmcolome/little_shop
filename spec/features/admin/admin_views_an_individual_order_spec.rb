@@ -21,15 +21,15 @@ RSpec.describe "visit individual order" do
       expect(page).to have_content("Purchaser: #{order1.user.first_name} #{order1.user.last_name}")
       expect(page).to have_content("Address: #{order1.user.address}, #{order1.user.city}, #{order1.user.state}, #{order1.user.zipcode}")
 
-      expect(page).to have_css("th", "Items")
-      expect(page).to have_css("th", "Quantity")
-      expect(page).to have_css("th", "Price")
-      expect(page).to have_css("th", "Subtotal")
+      page.has_css?("th", text: "Items")
+      page.has_css?("th", text: "Quantity")
+      page.has_css?("th", text: "Price")
+      page.has_css?("th", text: "Subtotal")
 
-      expect(page).to have_css("td", order1.items.first.title)
-      expect(page).to have_css("td", item.get_quantity(order1))
-      expect(page).to have_css("td", item.price)
-      expect(page).to have_css("td", "$100.00")
+      page.has_css?("td", text: order1.items.first.title)
+      page.has_css?("td", text: item.get_quantity(order1))
+      page.has_css?("td", text: item.price)
+      page.has_css?("td", text: "$100.00")
 
       expect(page).to have_content "Total: $100.00"
       expect(page).to have_content "Status: #{order1.status}"
@@ -56,15 +56,15 @@ RSpec.describe "visit individual order" do
       expect(page).to have_content("Purchaser: #{order1.user.first_name} #{order1.user.last_name}")
       expect(page).to have_content("Address: #{order1.user.address}, #{order1.user.city}, #{order1.user.state}, #{order1.user.zipcode}")
 
-      expect(page).to have_css("th", "Items")
-      expect(page).to have_css("th", "Quantity")
-      expect(page).to have_css("th", "Price")
-      expect(page).to have_css("th", "Subtotal")
+      page.has_css?("th", text: "Items")
+      page.has_css?("th", text: "Quantity")
+      page.has_css?("th", text: "Price")
+      page.has_css?("th", text: "Subtotal")
 
-      expect(page).to have_css("td", order1.items.first.title)
-      expect(page).to have_css("td", item.get_quantity(order1))
-      expect(page).to have_css("td", item.price)
-      expect(page).to have_css("td", "$100.00")
+      page.has_css?("td", text: order1.items.first.title)
+      page.has_css?("td", text: item.get_quantity(order1))
+      page.has_css?("td", text: item.price)
+      page.has_css?("td", text: "$100.00")
 
       expect(page).to have_content "Total: $300.00"
       expect(page).to have_content "Status: #{order1.status}"
