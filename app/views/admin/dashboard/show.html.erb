@@ -20,7 +20,7 @@
   <%= link_to "Order #{order.id}, #{order.user.username}", user_order_path(order.user, order) %>
   <%= form_for order, url: admin_dashboard_path(id: order.id), method: "PUT" do |f| %>
     <%= f.label "Update Order Status: " %>
-    <%= f.select :status, ["Ordered", "Paid", "Cancelled", "Completed"] %>
+    <%= render partial: order.status, :locals => { :f => f} %>
     <%= f.submit "Update Status" %>
   <% end %>
 <% end %>

@@ -1,6 +1,6 @@
 class Admin::DashboardController < Admin::BaseController
   def show
-    @orders = Order.all
+    @orders = Order.order(updated_at: :desc)
   end
 
   def edit
