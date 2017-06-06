@@ -39,7 +39,8 @@ class Seeds
     25.times do
       item = category.items.create(title: Faker::StarWars.droid,
                                   description: Faker::StarWars.quote,
-                                  price: (40..5000).to_a.sample)
+                                  price: (40..5000).to_a.sample,
+                                  image_att: File.new("#{Rails.root}/public/system/items/image_atts/000/000/003/medium/Battle_Droid.png"))
       puts "#{item.title} was created in #{category.name}"
     end
   end
@@ -49,7 +50,8 @@ class Seeds
     25.times do
       item = category2.items.create(title: Faker::StarWars.vehicle,
                                   description: Faker::StarWars.quote,
-                                  price: (40..5000).to_a.sample)
+                                  price: (40..5000).to_a.sample,
+                                  image_att: File.new("#{Rails.root}/public/system/items/image_atts/000/000/002/medium/interdictor-star-destroyer.jpg"))
       puts "#{item.title} was created in #{category2.name}"
     end
   end
@@ -59,7 +61,8 @@ class Seeds
     25.times do
       item = category3.items.create(title: "Potion of " + Faker::Superhero.power,
                                   description: Faker::Superhero.prefix + " " + Faker::Superhero.suffix,
-                                  price: (40..5000).to_a.sample)
+                                  price: (40..5000).to_a.sample,
+                                  image_att: File.new("#{Rails.root}/public/system/items/image_atts/000/000/001/medium/Ageing_potion.png"))
       puts "#{item.title} was created in #{category3.name}"
     end
   end
