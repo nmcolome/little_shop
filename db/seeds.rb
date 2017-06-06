@@ -39,7 +39,7 @@ class Seeds
     25.times do
       item = category.items.create(title: Faker::StarWars.droid,
                                   description: Faker::StarWars.quote,
-                                  price: [40.00..5000.00].sample)
+                                  price: (40.00..5000.00).to_a.sample)
       puts "#{item.title} was created in #{category.name}"
     end
   end
@@ -49,7 +49,7 @@ class Seeds
     25.times do
       item = category2.items.create(title: Faker::StarWars.vehicle,
                                   description: Faker::StarWars.quote,
-                                  price: [40.00..5000.00].sample)
+                                  price: (40.00..5000.00).to_a.sample)
       puts "#{item.title} was created in #{category2.name}"
     end
   end
@@ -59,7 +59,7 @@ class Seeds
     25.times do
       item = category3.items.create(title: "Potion of " + Faker::Superhero.power,
                                   description: Faker::Superhero.prefix + " " + Faker::Superhero.suffix,
-                                  price: [40.00..5000.00].sample)
+                                  price: (40.00..5000.00).to_a.sample)
       puts "#{item.title} was created in #{category3.name}"
     end
   end
@@ -79,9 +79,9 @@ class Seeds
 
   def populate_database
     create_users
+    create_potions
     create_droids
     create_vehicles
-    create_potions
     create_orders
   end
 end
