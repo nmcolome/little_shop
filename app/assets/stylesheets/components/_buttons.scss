@@ -1,7 +1,16 @@
+@import 'base';
+
 input {
   font-size: 16px;
 }
 
 .login-submit {
-  background-color: #FEC007;
+  background-color: $accent;
+}
+
+.btn {
+  background-color: $accent;
+  padding: 2px 6px 2px 6px;
+  margin: 0px 80px;
+  border-radius: 4px;
 }
