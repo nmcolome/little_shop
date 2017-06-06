@@ -55,6 +55,16 @@ FactoryGirl.define do
         create_list(:order, evaluator.orders_count, user: user)
       end
     end
+
+    factory :user_with_order_with_items do
+      transient do
+        orders_count 2
+      end
+
+      after(:create) do |user, evaluator|
+        create_list(:order_with_items, evaluator.orders_count, user: user)
+      end
+    end
   end
 
   factory :order do
