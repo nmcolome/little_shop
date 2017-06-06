@@ -11,5 +11,6 @@ class Admin::DashboardController < Admin::BaseController
     @order = Order.find(params[:id])
     @order.update_attribute :status, params[:order][:status]
     @order.save
+    redirect_to admin_dashboard_path(:current_user)
   end
 end
