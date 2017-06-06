@@ -7,9 +7,5 @@ class Order < ActiveRecord::Base
 
   def total
     OrderItem.where(order_id: self.id).sum("price_at_purchase * quantity")
-    # self.order_items.sum("price_at_purchase * quantity")
-    # items.reduce(0) do |total, item|
-    #   total += item.cart_subtotal(self)
-    # end
   end
 end
