@@ -55,7 +55,7 @@ class Seeds
   end
 
   def create_potions
-    category3 = Category.create(name: "potions")
+    category3 = Category.create!(name: "potions")
     25.times do
       item = category3.items.create(title: "Potion of " + Faker::Superhero.power,
                                   description: Faker::Superhero.prefix + " " + Faker::Superhero.suffix,

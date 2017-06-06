@@ -1,17 +1,22 @@
-<ul>
-<% @items.each do |item| %>
-  <li><%= link_to item.title, item_path(item) %></li>
-  <li><%= item.price %></li>
+<div>
+  <div class="grid">
+  <% @items.each do |item| %>
+    <article class='item_container'>
+      <img src="http://via.placeholder.com/200x150" alt="Image Placeholder">
+      <%= link_to item.title, item_path(item) %>
+      $ <%= number_with_precision(item.price, :precision => 2) %>
 
-  <% if item.active? %>
-    <li><%= link_to "Add to Cart", carts_path(item_id: item.id), method: :post %></li>
-  <% else %>
-    <li>Item Retired</li>
-  <% end %>
+      <% if item.active? %>
+        <%= link_to "Add to Cart", carts_path(item_id: item.id), method: :post %>
+      <% else %>
+        Item Retired
+      <% end %>
 
-  <% if current_admin? %>
-    Status: <%= item.status %><br />
-    <%= link_to "Edit Item", edit_admin_item_path(item) %>
-  <% end %>
-<% end %>
-</ul>
+      <% if current_admin? %>
+        Status: <%= item.status %><br />
+        <%= link_to "Edit Item", edit_admin_item_path(item) %>
+      <% end %>
+    </article>
+    <% end %>
+  </div>
+</div>
