@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+@import 'base';
+@import 'skeleton';
+// @import 'colors';
+// @import 'typography';
+
+@import 'components/buttons';
+@import 'components/forms';
+@import 'components/navbars';
+
+// @import 'sections/header';
+// @import 'sections/about';
+// @import 'sections/history';
+// @import 'sections/services';
+// @import 'sections/customers';
+// @import 'sections/footer';
