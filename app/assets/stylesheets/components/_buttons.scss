@@ -1,7 +1,9 @@
+@import 'base';
+
 input {
   font-size: 16px;
 }
 
 .login-submit {
-  background-color: #FEC007;
+  background-color: $accent;
 }
