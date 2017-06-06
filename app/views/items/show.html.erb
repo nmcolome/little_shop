@@ -1,6 +1,7 @@
 
 <h3><%= @item.title %></h3>
 <ul>
+  <%= image_tag @item.image_att.url(:medium) %>
   <li>Description: <%= @item.description %></li>
   <li>Price: $<%= number_with_precision(@item.price, :precision => 2) %></li>
   <li>Status: <%= @item.status %></li>

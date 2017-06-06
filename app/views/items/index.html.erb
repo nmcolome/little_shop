@@ -2,7 +2,7 @@
   <div class="grid">
   <% @items.each do |item| %>
     <article class='item_container'>
-      <img src="http://via.placeholder.com/200x150" alt="Image Placeholder">
+      <img src="<%= item.image_att %>" >
       <%= link_to item.title, item_path(item), class: "link" %>
       $ <%= number_with_precision(item.price, :precision => 2) %>
 
