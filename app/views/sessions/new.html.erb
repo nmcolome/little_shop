@@ -1,16 +1,18 @@
-<div class="user_forms">
-  <h2>Login</h2>
+<div class="form_container">
+  <div class="user_forms">
+    <h2>Login</h2>
 
-  <%= form_for(:session, url: login_path) do |f| %>
-    <%= f.label :username %>
-    <%= f.text_field :username %> <br>
+    <%= form_for(:session, url: login_path) do |f| %>
+      <%= f.label :username %>
+      <%= f.text_field :username %> <br>
 
-    <%= f.label :password %>
-    <%= f.password_field :password %> <br>
+      <%= f.label :password %>
+      <%= f.password_field :password %> <br>
 
-    <%= f.submit "Login", class: 'login-submit' %>
+      <%= f.submit "Login", class: 'login-submit' %>
 
-  <% end %>
+    <% end %>
 
-  <h3>Don't have an account? <%= link_to "Create Account", new_user_path %></h3>
+    <h3>Don't have an account? <%= link_to "Create Account", new_user_path %></h3>
+  </div>
 </div>

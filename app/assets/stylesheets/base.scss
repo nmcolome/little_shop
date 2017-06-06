@@ -12,9 +12,13 @@ $second-text: #757575;
 $divider: #BCBCBC;
 
 * {
-	border: 1px solid red;
+	// border: 1px solid red;
 }
 
 * {
   font-family: $font-sans;
+}
+
+body {
+  background-color: #EDEDED;
 }
