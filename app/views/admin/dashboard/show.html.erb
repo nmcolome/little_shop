@@ -11,22 +11,22 @@
 <h5>Order Status Summaries:</h5>
 <table>
   <tr>
-    <td><button><%= link_to "All Orders:", admin_dashboard_path(:filter => "All Orders") %></button></td>
+    <td><button><%= link_to "View All Orders:", admin_dashboard_path(:filter => "All Orders") %></button></td>
     <td><%= @order_count.count %></td>
   <tr>
-    <td><button><%= link_to "Ordered:", admin_dashboard_path(:filter => "Ordered") %></button></td>
+    <td><button><%= link_to "View Ordered:", admin_dashboard_path(:filter => "Ordered") %></button></td>
     <td><%= @order_count.orders_only("Ordered") %></td>
   </tr>
   <tr>
-    <td><button><%= link_to "Paid:", admin_dashboard_path(:filter => "Paid") %></button></td>
+    <td><button><%= link_to "View Paid:", admin_dashboard_path(:filter => "Paid") %></button></td>
     <td><%= @order_count.orders_only("Paid") %></td>
   </tr>
   <tr>
-    <td><button><%= link_to "Cancelled:", admin_dashboard_path(:filter => "Cancelled") %></button></td>
+    <td><button><%= link_to "View Cancelled:", admin_dashboard_path(:filter => "Cancelled") %></button></td>
     <td><%= @order_count.orders_only("Cancelled") %></td>
   </tr>
   <tr>
-    <td><button><%= link_to "Completed:", admin_dashboard_path(:filter => "Completed") %></button></td>
+    <td><button><%= link_to "View Completed:", admin_dashboard_path(:filter => "Completed") %></button></td>
     <td><%= @order_count.orders_only("Completed") %></td>
   </tr>
 </table>
