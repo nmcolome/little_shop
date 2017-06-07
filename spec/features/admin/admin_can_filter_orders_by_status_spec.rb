@@ -11,24 +11,24 @@ RSpec.describe "an admin can filter orders list by status" do
 
     visit admin_dashboard_path
 
-    expect(page).to have_content order1.id
-    expect(page).to have_content order2.id
-    expect(page).to have_content order3.id
-    expect(page).to have_content order4.id
+    expect(page).to have_content "Order #{order1.id}"
+    expect(page).to have_content "Order #{order2.id}"
+    expect(page).to have_content "Order #{order3.id}"
+    expect(page).to have_content "Order #{order4.id}"
 
     click_link "View Ordered:"
-
-    expect(page).to have_content order1.id
-    expect(page).to_not have_content order2.id
-    expect(page).to_not have_content order3.id
-    expect(page).to_not have_content order4.id
+save_and_open_page
+    expect(page).to have_content "Order #{order1.id}"
+    expect(page).to_not have_content "Order #{order2.id}"
+    expect(page).to_not have_content "Order #{order3.id}"
+    expect(page).to_not have_content "Order #{order4.id}"
 
     click_link "All Orders"
 
-    expect(page).to have_content order1.id
-    expect(page).to have_content order2.id
-    expect(page).to have_content order3.id
-    expect(page).to have_content order4.id
+    expect(page).to have_content "Order #{order1.id}"
+    expect(page).to have_content "Order #{order2.id}"
+    expect(page).to have_content "Order #{order3.id}"
+    expect(page).to have_content "Order #{order4.id}"
   end
 
   scenario "to only see paid items" do
@@ -41,17 +41,17 @@ RSpec.describe "an admin can filter orders list by status" do
 
     visit admin_dashboard_path
 
-    expect(page).to have_content order1.id
-    expect(page).to have_content order2.id
-    expect(page).to have_content order3.id
-    expect(page).to have_content order4.id
+    expect(page).to have_content "Order #{order1.id}"
+    expect(page).to have_content "Order #{order2.id}"
+    expect(page).to have_content "Order #{order3.id}"
+    expect(page).to have_content "Order #{order4.id}"
 
     click_link "View Paid:"
 
-    expect(page).to have_content order2.id
-    expect(page).to_not have_content order1.id
-    expect(page).to_not have_content order3.id
-    expect(page).to_not have_content order4.id
+    expect(page).to have_content "Order #{order2.id}"
+    expect(page).to_not have_content "Order #{order1.id}"
+    expect(page).to_not have_content "Order #{order3.id}"
+    expect(page).to_not have_content "Order #{order4.id}"
   end
 
   scenario "to only see cancelled items" do
@@ -64,17 +64,17 @@ RSpec.describe "an admin can filter orders list by status" do
 
     visit admin_dashboard_path
 
-    expect(page).to have_content order1.id
-    expect(page).to have_content order2.id
-    expect(page).to have_content order3.id
-    expect(page).to have_content order4.id
+    expect(page).to have_content "Order #{order1.id}"
+    expect(page).to have_content "Order #{order2.id}"
+    expect(page).to have_content "Order #{order3.id}"
+    expect(page).to have_content "Order #{order4.id}"
 
     click_link "View Cancelled:"
 
-    expect(page).to have_content order3.id
-    expect(page).to_not have_content order1.id
-    expect(page).to_not have_content order2.id
-    expect(page).to_not have_content order4.id
+    expect(page).to have_content "Order #{order3.id}"
+    expect(page).to_not have_content "Order #{order1.id}"
+    expect(page).to_not have_content "Order #{order2.id}"
+    expect(page).to_not have_content "Order #{order4.id}"
   end
 
   scenario "to only see completed items" do
@@ -87,16 +87,16 @@ RSpec.describe "an admin can filter orders list by status" do
 
     visit admin_dashboard_path
 
-    expect(page).to have_content order1.id
-    expect(page).to have_content order2.id
-    expect(page).to have_content order3.id
-    expect(page).to have_content order4.id
+    expect(page).to have_content "Order #{order1.id}"
+    expect(page).to have_content "Order #{order2.id}"
+    expect(page).to have_content "Order #{order3.id}"
+    expect(page).to have_content "Order #{order4.id}"
 
     click_link "View Completed:"
 
-    expect(page).to have_content order4.id
-    expect(page).to_not have_content order1.id
-    expect(page).to_not have_content order2.id
-    expect(page).to_not have_content order3.id
+    expect(page).to have_content "Order #{order4.id}"
+    expect(page).to_not have_content "Order #{order1.id}"
+    expect(page).to_not have_content "Order #{order2.id}"
+    expect(page).to_not have_content "Order #{order3.id}"
   end
 end
