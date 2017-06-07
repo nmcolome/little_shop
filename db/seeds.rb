@@ -7,6 +7,26 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 class Seeds
+
+  DROIDS = ["#{Rails.root}/app/assets/images/items/image_atts/000/000/040/medium/Battle_Droid.png",
+            "#{Rails.root}/app/assets/images/items/image_atts/000/000/084/medium/astromechs-droid.jpg",
+            "#{Rails.root}/app/assets/images/items/image_atts/000/000/085/medium/main-qimg_droid.jpeg",
+            "#{Rails.root}/app/assets/images/items/image_atts/000/000/086/medium/maxres_droid.jpg",
+            "#{Rails.root}/app/assets/images/items/image_atts/000/000/087/medium/Repwardroid2.jpg"]
+
+  VEHICLES = ["#{Rails.root}/app/assets/images/items/image_atts/000/000/075/medium/interdictor-star-destroyer.jpg",
+            "#{Rails.root}/app/assets/images/items/image_atts/000/000/080/medium/TIEfighter2.png",
+            "#{Rails.root}/app/assets/images/items/image_atts/000/000/081/medium/X-wing.png",
+            "#{Rails.root}/app/assets/images/items/image_atts/000/000/082/medium/AT-AT.png",
+            "#{Rails.root}/app/assets/images/items/image_atts/000/000/083/medium/MillenniumFalcon.png"]
+
+  POTIONS = ["#{Rails.root}/app/assets/images/items/image_atts/000/000/001/medium/Ageing_potion.png",
+            "#{Rails.root}/app/assets/images/items/image_atts/000/000/076/medium/potion_5.png",
+            "#{Rails.root}/app/assets/images/items/image_atts/000/000/077/medium/potion_4.png",
+            "#{Rails.root}/app/assets/images/items/image_atts/000/000/078/medium/potion_3.png",
+            "#{Rails.root}/app/assets/images/items/image_atts/000/000/079/medium/potion_2.png"]
+
+
   def create_users
     20.times do
       user = User.create(first_name: Faker::Name.first_name,
@@ -40,7 +60,7 @@ class Seeds
       item = category.items.create(title: Faker::StarWars.droid,
                                   description: Faker::StarWars.quote,
                                   price: (40..5000).to_a.sample,
-                                  image_att: File.new("#{Rails.root}/public/system/items/image_atts/000/000/003/medium/Battle_Droid.png"))
+                                  image_att: File.new(DROIDS.sample))
       puts "#{item.title} was created in #{category.name}"
     end
   end
@@ -51,7 +71,7 @@ class Seeds
       item = category2.items.create(title: Faker::StarWars.vehicle,
                                   description: Faker::StarWars.quote,
                                   price: (40..5000).to_a.sample,
-                                  image_att: File.new("#{Rails.root}/public/system/items/image_atts/000/000/002/medium/interdictor-star-destroyer.jpg"))
+                                  image_att: File.new(VEHICLES.sample))
       puts "#{item.title} was created in #{category2.name}"
     end
   end
@@ -62,7 +82,7 @@ class Seeds
       item = category3.items.create(title: "Potion of " + Faker::Superhero.power,
                                   description: Faker::Superhero.prefix + " " + Faker::Superhero.suffix,
                                   price: (40..5000).to_a.sample,
-                                  image_att: File.new("#{Rails.root}/public/system/items/image_atts/000/000/001/medium/Ageing_potion.png"))
+                                  image_att: File.new(POTIONS.sample))
       puts "#{item.title} was created in #{category3.name}"
     end
   end
