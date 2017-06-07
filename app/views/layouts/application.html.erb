@@ -10,6 +10,7 @@
 
   <body>
     <%= render partial: "layouts/navbar" %>
+    <%= render partial: "layouts/cat_bar" %>
     <% flash.each do |type, message| %>
       <%= content_tag :div, sanitize(message), class: type %>
     <% end %>
