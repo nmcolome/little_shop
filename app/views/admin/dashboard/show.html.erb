@@ -8,12 +8,23 @@
 
 <%= link_to "Add new item", new_admin_item_path %><br />
 
+Filter Orders By:
+<%#= form_tag '', method: :get do %>
+  <%#= select_tag ["Ordered", "Paid", "Cancelled", "Completed"] %>
+  <%#= submit_tag 'Filter Orders' %>
+<%# end %>
+<%#= form_for @orders do |f| %>
+  <%#= f.select :status, ["Ordered", "Paid", "Cancelled", "Completed"] %>
+  <%#= f.submit "Filter Orders" %>
+<%# end %>
+
 <h5>Order Status Summaries</h5>
 <ul>
-  <li>Ordered: <%= @orders.where(status: "Ordered").count %></li>
-  <li>Paid: <%= @orders.where(status: "Paid").count %></li>
-  <li>Cancelled: <%= @orders.where(status: "Cancelled").count %></li>
-  <li>Completed: <%= @orders.where(status: "Completed").count %></li>
+  <li><%= link_to "All Orders:", admin_dashboard_path(:filter => "All Orders") %> <%= @order_count.count %></li>
+  <li><%= link_to "Ordered:", admin_dashboard_path(:filter => "Ordered") %> <%= @order_count.where(status: "Ordered").count %></li>
+  <li><%= link_to "Paid:", admin_dashboard_path(:filter => "Paid") %> <%= @order_count.where(status: "Paid").count %></li>
+  <li><%= link_to "Cancelled:", admin_dashboard_path(:filter => "Cancelled") %> <%= @order_count.where(status: "Cancelled").count %></li>
+  <li><%= link_to "Completed:", admin_dashboard_path(:filter => "Completed") %> <%= @order_count.where(status: "Completed").count %></li>
 </ul>
 
 <% @orders.each do |order| %>
