@@ -19,13 +19,28 @@ Filter Orders By:
 <%# end %>
 
 <h5>Order Status Summaries</h5>
-<ul>
-  <li><%= link_to "All Orders:", admin_dashboard_path(:filter => "All Orders") %> <%= @order_count.count %></li>
-  <li><%= link_to "Ordered:", admin_dashboard_path(:filter => "Ordered") %> <%= @order_count.where(status: "Ordered").count %></li>
-  <li><%= link_to "Paid:", admin_dashboard_path(:filter => "Paid") %> <%= @order_count.where(status: "Paid").count %></li>
-  <li><%= link_to "Cancelled:", admin_dashboard_path(:filter => "Cancelled") %> <%= @order_count.where(status: "Cancelled").count %></li>
-  <li><%= link_to "Completed:", admin_dashboard_path(:filter => "Completed") %> <%= @order_count.where(status: "Completed").count %></li>
-</ul>
+<table>
+  <tr>
+    <td><%= link_to "All Orders:", admin_dashboard_path(:filter => "All Orders") %></td>
+    <td><%= @order_count.count %></td>
+  <tr>
+    <td><%= link_to "Ordered:", admin_dashboard_path(:filter => "Ordered") %></td>
+    <td><%= @order_count.where(status: "Ordered").count %></td>
+  </tr>
+  <tr>
+    <td><%= link_to "Paid:", admin_dashboard_path(:filter => "Paid") %></td>
+    <td><%= @order_count.where(status: "Paid").count %></td>
+  </tr>
+  <tr>
+    <td><%= link_to "Cancelled:", admin_dashboard_path(:filter => "Cancelled") %></td>
+    <td><%= @order_count.where(status: "Cancelled").count %></td>
+  </tr>
+  <tr>
+    <td><%= link_to "Completed:", admin_dashboard_path(:filter => "Completed") %></td>
+    <td><%= @order_count.where(status: "Completed").count %></td>
+  </tr>
+</table>
+<br />
 
 <% @orders.each do |order| %>
   <%= link_to "Order #{order.id}, #{order.user.username}", user_order_path(order.user, order) %>
