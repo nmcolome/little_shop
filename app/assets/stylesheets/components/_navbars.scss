@@ -1,0 +1,16 @@
+@import 'base';
+
+.navbar {
+  align-items: center;
+  background-color: $accent;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10);
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 10px;
+
+  // .nav-links {
+  //   display: flex;
+  //   justify-content: space-around;
+  // }
+}
