@@ -9,23 +9,8 @@
   </head>
 
   <body>
-    <nav class='navbar'>
-      <h2>Company Logo</h2>
-      <div class='nav_links'>
-        <% if current_user %>
-          Logged in as <%= current_user.username %>
-            <% if current_admin? %>
-              <%= link_to "My Account", '/admin/dashboard' %>
-            <% else %>
-              <%= link_to "My Account", '/dashboard' %>
-            <% end %>
-          <%= link_to "Logout", logout_path, method: :delete %>
-        <% else %>
-          <%= link_to "Login", login_path %>
-        <% end %>
-        <%= link_to "View Cart", carts_path %>
-      </div>
-    </nav>
+    <%= render partial: "layouts/navbar" %>
+    <%= render partial: "layouts/cat_bar" %>
     <% flash.each do |type, message| %>
       <%= content_tag :div, sanitize(message), class: type %>
     <% end %>

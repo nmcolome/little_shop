@@ -5,6 +5,6 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.page(params[:page]).per(10)
+    @items = Item.page(params[:page]).per(12)
   end
 end
