@@ -1,14 +1,8 @@
 class Admin::DashboardController < Admin::BaseController
   def show
     @order_count = Order.all
-    if params[:filter] == "Ordered"
-      @orders = Order.where(status: "Ordered").order(updated_at: :desc)
-    elsif params[:filter] == "Paid"
-      @orders = Order.where(status: "Paid").order(updated_at: :desc)
-    elsif params[:filter] == "Cancelled"
-      @orders = Order.where(status: "Cancelled").order(updated_at: :desc)
-    elsif params[:filter] == "Completed"
-      @orders = Order.where(status: "Completed").order(updated_at: :desc)
+    if params[:filter] && params[:filter] != "All Orders"
+      @orders = Order.orders_filter(params[:filter])
     else
       @orders = Order.order(updated_at: :desc)
     end
