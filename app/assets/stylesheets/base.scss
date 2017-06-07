@@ -11,10 +11,11 @@ $primary-text: #212121;
 $second-text: #757575;
 $divider: #BCBCBC;
 $background: #EDEDED;
-$hover-accent: #f5dd95;
+$clear-hover: #f5dd95;
+$dark-hover: blue;
 
 * {
-	border: 1px solid red;
+	// border: 1px solid red;
   color: $primary-text;
   font-family: $font-sans;
   text-decoration: none;

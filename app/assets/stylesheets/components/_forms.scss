@@ -3,6 +3,7 @@
 .form_container {
   display: flex;
   justify-content: center;
+  margin: 30px;
 }
 
 .user_forms {
@@ -32,5 +33,9 @@
       border-radius: 4px;
       border: 1px solid $second-text;
     }
+  }
+  a:hover {
+    color: $dark-hover;
+    font-weight: 500;
   }
 }
