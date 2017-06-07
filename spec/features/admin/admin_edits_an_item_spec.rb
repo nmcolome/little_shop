@@ -24,7 +24,7 @@ RSpec.describe "user edits an item" do
 
   context "as registered user" do
     it "they can't see the page" do
-      user = create(:user, role: 1)
+      user = create(:user)
       item1 = create(:item)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -32,7 +32,7 @@ RSpec.describe "user edits an item" do
 
       expect(page).to_not have_content("Edit Item")
       expect(page).to_not have_content("Submit")
-      # expect(page).to have_content("The page you were looking for doesn't exist.")
+      expect(page).to have_content("The page you were looking for doesn't exist.")
     end
   end
 
