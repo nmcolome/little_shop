@@ -11,14 +11,20 @@ $primary-text: #212121;
 $second-text: #757575;
 $divider: #BCBCBC;
 $background: #EDEDED;
+$hover-accent: #f5dd95;
 
 * {
-	// border: 1px solid red;
+	border: 1px solid red;
   color: $primary-text;
   font-family: $font-sans;
   text-decoration: none;
 }
 
-body {
-  background-color: $background;
+.kaminari {
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  justify-content: center;
+  text-align: center;
 }
