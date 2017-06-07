@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "an admin can filter orders list by status" do
   scenario "when they are in their dashboard" do
     admin = create(:user, role: 1)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
     order1 = create(:order_with_items, status: 0)
     order2 = create(:order_with_items, status: 1)
     order3 = create(:order_with_items, status: 2)
@@ -15,17 +16,15 @@ RSpec.describe "an admin can filter orders list by status" do
     expect(page).to have_content order3.id
     expect(page).to have_content order4.id
 
-    expect(page).to have_content "Filter by: "
-    select "Ordered", from: "Status"
-    click_on "Filter Orders"
+    # expect(page).to have_content "Filter Orders By: "
+    click_on "Ordered:"
 
     expect(page).to have_content order1.id
     expect(page).to_not have_content order2.id
     expect(page).to_not have_content order3.id
     expect(page).to_not have_content order4.id
 
-    select "All", from: "Status"
-    click_on "Filter Orders"
+    click_on "All Orders"
 
     expect(page).to have_content order1.id
     expect(page).to have_content order2.id
