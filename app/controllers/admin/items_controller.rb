@@ -13,14 +13,6 @@ class Admin::ItemsController < Admin::BaseController
     end
   end
 
-  def index
-    @items = Item.all
-  end
-
-  def show
-    @item = Item.find(params[:id])
-  end
-
   def edit
     @item = Item.find(params[:id])
   end
@@ -31,12 +23,12 @@ class Admin::ItemsController < Admin::BaseController
 
     flash.notice = "This item has now been edited"
 
-    redirect_to admin_item_path(@item)
+    redirect_to item_path(@item)
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :price, :status)
+    params.require(:item).permit(:title, :description, :price, :status, :image_att)
   end
 end

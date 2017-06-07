@@ -7,8 +7,7 @@ RSpec.describe "visit individual order" do
       user = create(:user)
       item = create(:item)
       order1 = create(:order, user_id: user.id)
-      OrderItem.create(item_id: item.id, order_id: order1.id, quantity: 1)
-
+      OrderItem.create(item_id: item.id, order_id: order1.id, quantity: 1, price_at_purchase: 100.00)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit "admin/dashboard" #new_admin_item_path
@@ -21,15 +20,15 @@ RSpec.describe "visit individual order" do
       expect(page).to have_content("Purchaser: #{order1.user.first_name} #{order1.user.last_name}")
       expect(page).to have_content("Address: #{order1.user.address}, #{order1.user.city}, #{order1.user.state}, #{order1.user.zipcode}")
 
-      expect(page).to have_css("th", "Items")
-      expect(page).to have_css("th", "Quantity")
-      expect(page).to have_css("th", "Price")
-      expect(page).to have_css("th", "Subtotal")
+      page.has_css?("th", text: "Items")
+      page.has_css?("th", text: "Quantity")
+      page.has_css?("th", text: "Price")
+      page.has_css?("th", text: "Subtotal")
 
-      expect(page).to have_css("td", order1.items.first.title)
-      expect(page).to have_css("td", item.get_quantity(order1))
-      expect(page).to have_css("td", item.price)
-      expect(page).to have_css("td", "$100.00")
+      page.has_css?("td", text: order1.items.first.title)
+      page.has_css?("td", text: item.get_quantity(order1))
+      page.has_css?("td", text: item.price)
+      page.has_css?("td", text: "$100.00")
 
       expect(page).to have_content "Total: $100.00"
       expect(page).to have_content "Status: #{order1.status}"
@@ -41,8 +40,8 @@ RSpec.describe "visit individual order" do
       item = create(:item)
       item2 = create(:item)
       order1 = create(:order, user_id: user.id)
-      OrderItem.create(item_id: item.id, order_id: order1.id, quantity: 1)
-      OrderItem.create(item_id: item2.id, order_id: order1.id, quantity: 2)
+      OrderItem.create(item_id: item.id, order_id: order1.id, quantity: 1, price_at_purchase: 100.00)
+      OrderItem.create(item_id: item2.id, order_id: order1.id, quantity: 2, price_at_purchase: 100.00)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -56,15 +55,15 @@ RSpec.describe "visit individual order" do
       expect(page).to have_content("Purchaser: #{order1.user.first_name} #{order1.user.last_name}")
       expect(page).to have_content("Address: #{order1.user.address}, #{order1.user.city}, #{order1.user.state}, #{order1.user.zipcode}")
 
-      expect(page).to have_css("th", "Items")
-      expect(page).to have_css("th", "Quantity")
-      expect(page).to have_css("th", "Price")
-      expect(page).to have_css("th", "Subtotal")
+      page.has_css?("th", text: "Items")
+      page.has_css?("th", text: "Quantity")
+      page.has_css?("th", text: "Price")
+      page.has_css?("th", text: "Subtotal")
 
-      expect(page).to have_css("td", order1.items.first.title)
-      expect(page).to have_css("td", item.get_quantity(order1))
-      expect(page).to have_css("td", item.price)
-      expect(page).to have_css("td", "$100.00")
+      page.has_css?("td", text: order1.items.first.title)
+      page.has_css?("td", text: item.get_quantity(order1))
+      page.has_css?("td", text: item.price)
+      page.has_css?("td", text: "$100.00")
 
       expect(page).to have_content "Total: $300.00"
       expect(page).to have_content "Status: #{order1.status}"

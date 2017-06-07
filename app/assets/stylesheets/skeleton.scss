@@ -1,0 +1,24 @@
+@import 'base';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+
+p {
+  font-size: 14px;
+}
+
+section {
+  padding: 30px auto;
+}
+
+body {
+  background-color: $background;
+  margin: 0;
+  padding: 0;
+}

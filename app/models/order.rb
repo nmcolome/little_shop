@@ -6,9 +6,14 @@ class Order < ActiveRecord::Base
   enum status: ["Ordered", "Paid", "Cancelled", "Completed"]
 
   def total
-    binding.pry
-    items.reduce(0) do |total, item|
-      total += item.cart_subtotal(self)
-    end
+    OrderItem.where(order_id: self.id).sum("price_at_purchase * quantity")
+  end
+
+  def self.orders_only(status)
+    self.where(status: status).count
+  end
+
+  def self.orders_filter(status)
+    self.where(status: status).order(updated_at: :desc)
   end
 end

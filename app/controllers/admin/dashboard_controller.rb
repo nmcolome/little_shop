@@ -1,6 +1,11 @@
 class Admin::DashboardController < Admin::BaseController
   def show
-    @orders = Order.all
+    @order_count = Order.all
+    if params[:filter] && params[:filter] != "All Orders"
+      @orders = Order.orders_filter(params[:filter])
+    else
+      @orders = Order.order(updated_at: :desc)
+    end
   end
 
   def edit
@@ -11,5 +16,6 @@ class Admin::DashboardController < Admin::BaseController
     @order = Order.find(params[:id])
     @order.update_attribute :status, params[:order][:status]
     @order.save
+    redirect_to admin_dashboard_path(:current_user)
   end
 end

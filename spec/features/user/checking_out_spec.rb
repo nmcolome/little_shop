@@ -6,6 +6,9 @@ RSpec.describe "A registered user can checkout items in their cart" do
     item2 = create(:item)
     item3 = create(:item)
     item4 = create(:item)
+    # @cart = Cart.new({})
+    # allow_any_instance_of(ApplicationController).to receive(:load_cart).and_return(@cart)
+    # binding.pry
 
     visit item_path(item1)
     click_on 'Add to Cart'

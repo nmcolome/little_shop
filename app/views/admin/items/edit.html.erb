@@ -1,19 +1,27 @@
-<%= form_for [:admin, @item] do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+<div class="form_container">
+  <div class="user_forms">
+    <h2>Edit Item Information</h2>
+    <%= form_for [:admin, @item] do |f| %>
+      <%= f.label :title, class:'label' %>
+      <%= f.text_field :title, class: 'text_input' %><br>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+      <%= f.label :description, class:'label' %>
+      <%= f.text_field :description, class: 'text_input' %><br>
 
-  <%= f.label :price %>
-  <%= f.text_field :price %>
+      <%= f.label :price, class:'label' %>
+      <%= f.text_field :price, class: 'text_input' %><br>
 
-  <%= f.label :category_list %>
-  <%= f.text_field :category_list %>
+      <%= f.label :category_list, class:'label' %>
+      <%= f.text_field :category_list, class: 'text_input' %><br>
 
-  <%= f.label :status %>
-  <%= f.select :status, ["active", "retired"] %>
+      <%= f.label :status, class:'label' %>
+      <%= f.select :status, ["active", "retired"] %><br>
 
-  <%= f.submit "Submit" %>
+      <%= f.label :image_att, "Attach Image" %>
+      <%= f.file_field :image_att %><br>
 
-<% end %>
+      <%= f.submit "Submit", class: 'login-submit' %>
+
+    <% end %>
+  </div>
+</div>

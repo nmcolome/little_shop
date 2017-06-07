@@ -1,0 +1,31 @@
+// @import url('https://fonts.googleapis.com/css?family=Lora|Muli');
+
+// $font-serif: 'Lora', serif;
+$font-sans: "Avenir Next", sans-serif;
+
+$light: #F4F4F4;
+$dark: #696969;
+$accent: #FEC007;
+$light-text: #F4F4F4;
+$primary-text: #212121;
+$second-text: #757575;
+$divider: #BCBCBC;
+$background: #EDEDED;
+$clear-hover: #f5dd95;
+$dark-hover: blue;
+
+* {
+	// border: 1px solid red;
+  color: $primary-text;
+  font-family: $font-sans;
+  text-decoration: none;
+}
+
+.kaminari {
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  justify-content: center;
+  text-align: center;
+}
