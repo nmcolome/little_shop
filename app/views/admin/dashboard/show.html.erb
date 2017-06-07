@@ -2,25 +2,39 @@
 
 <%= current_user.username %><br />
 
-<%= link_to "View All Items", items_path %><br />
-
 <%= link_to "Edit my Profile", edit_admin_dashboard_path(current_user) %><br />
 
 <%= link_to "Add new item", new_admin_item_path %><br />
 
-<h5>Order Status Summaries</h5>
-<ul>
-  <li>Ordered: <%= @orders.where(status: "Ordered").count %></li>
-  <li>Paid: <%= @orders.where(status: "Paid").count %></li>
-  <li>Cancelled: <%= @orders.where(status: "Cancelled").count %></li>
-  <li>Completed: <%= @orders.where(status: "Completed").count %></li>
-</ul>
+<h5>Order Status Summaries:</h5>
+<table>
+  <tr>
+    <td><button><%= link_to "View All Orders:", admin_dashboard_path(:filter => "All Orders") %></button></td>
+    <td><%= @order_count.count %></td>
+  <tr>
+    <td><button><%= link_to "View Ordered:", admin_dashboard_path(:filter => "Ordered") %></button></td>
+    <td><%= @order_count.orders_only("Ordered") %></td>
+  </tr>
+  <tr>
+    <td><button><%= link_to "View Paid:", admin_dashboard_path(:filter => "Paid") %></button></td>
+    <td><%= @order_count.orders_only("Paid") %></td>
+  </tr>
+  <tr>
+    <td><button><%= link_to "View Cancelled:", admin_dashboard_path(:filter => "Cancelled") %></button></td>
+    <td><%= @order_count.orders_only("Cancelled") %></td>
+  </tr>
+  <tr>
+    <td><button><%= link_to "View Completed:", admin_dashboard_path(:filter => "Completed") %></button></td>
+    <td><%= @order_count.orders_only("Completed") %></td>
+  </tr>
+</table>
+<br />
 
 <% @orders.each do |order| %>
   <%= link_to "Order #{order.id}, #{order.user.username}", user_order_path(order.user, order) %>
   <%= form_for order, url: admin_dashboard_path(id: order.id), method: "PUT" do |f| %>
     <%= f.label "Update Order Status: " %>
-    <%= f.select :status, ["Ordered", "Paid", "Cancelled", "Completed"] %>
+    <%= render partial: order.status, :locals => { :f => f} %>
     <%= f.submit "Update Status" %>
   <% end %>
 <% end %>

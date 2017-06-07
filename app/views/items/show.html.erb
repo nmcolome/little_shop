@@ -5,6 +5,11 @@
   <li>Description: <%= @item.description %></li>
   <li>Price: $<%= number_with_precision(@item.price, :precision => 2) %></li>
   <li>Status: <%= @item.status %></li>
+  <li>Categories:
+    <% @item.categories.each do |category| %>
+      <%= link_to category.name, category_path(category) %></li>
+    <% end %>
+
   <% if @item.active? %>
     <li><%= link_to "Add to Cart", carts_path(item_id: @item.id), method: :post %></li>
   <% else %>

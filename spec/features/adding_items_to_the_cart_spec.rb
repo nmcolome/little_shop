@@ -25,7 +25,7 @@ RSpec.describe "visitor can add items and remove from the cart" do
 
     expect(current_path).to eq(category_path(category2))
     expect(page).to have_content("You now have 1 #{item2.title}.")
-    
+
     click_on("View Cart")
 
     expect(current_path).to eq("/carts")
@@ -61,8 +61,8 @@ RSpec.describe "visitor can add items and remove from the cart" do
 
     expect(current_path).to eq("/carts")
     expect(page).to have_content("Successfully removed #{item1.title} from your cart.")
-    expect(page).to have_link(item1.title, item_path(item1))
-    expect(page).to_not have_css('h3', item1.title)
+    expect(page).to have_link(item1.title, href: item_path(item1))
+    expect(page).to_not have_css('h3', text: item1.title)
 
   end
 end

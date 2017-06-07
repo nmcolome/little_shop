@@ -62,7 +62,6 @@ RSpec.describe "orders view" do
       expect(page).to have_link("Order #{order.id}") ##change this - what are we naming each order?
       select "Cancelled", from: "order[status]"
       click_on "Update Status"
-      expect(current_path).to eq '/admin/dashboard'
       order.reload
       expect(order.status).to eq('Cancelled')
     end

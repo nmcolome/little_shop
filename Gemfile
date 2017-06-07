@@ -19,6 +19,8 @@ gem 'faker'
 
 
 gem 'paperclip', '~> 5.0.0'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'kaminari'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -32,9 +34,6 @@ group :development do
   gem 'listen', '~> 3.0.5'
 end
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem 'kaminari'
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'

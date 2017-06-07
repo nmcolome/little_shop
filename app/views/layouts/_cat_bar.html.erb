@@ -1,0 +1,8 @@
+<nav class='cat_bar'>
+  <div class='categories_links'>
+   <%= link_to "View All Items", items_path %>
+    <% Category.all.each do |category| %>
+      <%= link_to "#{category.name}", category_path(category) %>
+    <% end %>
+  </div>
+</nav>

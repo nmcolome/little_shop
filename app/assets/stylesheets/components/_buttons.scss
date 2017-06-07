@@ -1,7 +1,31 @@
+@import 'base';
+
 input {
   font-size: 16px;
 }
 
 .login-submit {
-  background-color: #FEC007;
+  background-color: $accent;
+  border-radius: 4px;
+  border: 1px solid $second-text;
+  margin: 25px 0 5px;
+  &:hover {
+    background-color: $clear-hover;
+  }
+}
+
+.btn {
+  background-color: $accent;
+  padding: 2px 6px 2px 6px;
+  margin: 0px 80px;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: $clear-hover;
+  }
+}
+
+#item_status {
+  font-size: 16px;
+  margin: 0 0 3px;
 }
