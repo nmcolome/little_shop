@@ -16,6 +16,10 @@ RSpec.describe "an admin can filter orders list by status" do
     expect(page).to have_content order3.id
     expect(page).to have_content order4.id
 
+<<<<<<< HEAD
+=======
+    # expect(page).to have_content "Filter Orders By: "
+>>>>>>> a56e50706e4815bde3e8ed2b83de50bbd8727793
     click_on "Ordered:"
 
     expect(page).to have_content order1.id
