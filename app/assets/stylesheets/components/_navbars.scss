@@ -9,8 +9,13 @@
   margin: 0;
   padding: 10px;
 
-  // .nav-links {
-  //   display: flex;
-  //   justify-content: space-around;
-  // }
+  .nav_links {
+    a {
+      margin-left: 20px;
+    }
+    a:hover {
+      color: $dark-hover;
+      font-weight: 500;
+    }
+  }
 }
