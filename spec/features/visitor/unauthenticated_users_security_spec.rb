@@ -47,7 +47,7 @@ RSpec.describe "An unauthenticated user" do
   end
 
   it "cannot make themselves an administrator" do
-    visit 'dashboard'
+    visit '/admin/dashboard'
 
     expect(page).to_not have_content "Hello"
     expect(page).to_not have_content("Update Role")
