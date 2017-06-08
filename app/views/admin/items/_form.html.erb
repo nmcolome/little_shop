@@ -9,7 +9,9 @@
   <%= f.text_field :price, class: 'text_input' %><br>
 
   <%= f.label :category_list, class: 'label' %>
-  <%= f.text_field :category_list, class: 'text_input' %><br>
+  <%= f.select :category_list, @categories, class: 'text_input' %><br>
+
+  <%= link_to "Create New Category", new_category_path %>
 
   <%= f.label :status, class: 'label' %>
   <%= f.select :status, ["active", "retired"] %><br>

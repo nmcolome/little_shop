@@ -2,6 +2,7 @@ class Admin::ItemsController < Admin::BaseController
 
   def new
     @item = Item.new
+    @categories = Category.all.map { |category| category.name }
   end
 
   def create
