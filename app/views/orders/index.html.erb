@@ -1,35 +1,40 @@
 <% @orders.each do |order| %>
-<table>
-  <tr>
-    <th>Order ID</th>
-    <th>Date</th>
-    <th>Time</th>
-    <th>Status</th>
-  </tr>
-  <tr>
-    <td>Order <%= order.id %></td>
-    <td><%= order.order_date %></td>
-    <td><%= order.order_time %></td>
-    <td><%= order.status %></td>
-  </tr>
-</table>
-<table>
-  <tr>
-    <th>Items</th>
-    <th>Quantity</th>
-    <th>Price</th>
-    <th>Subtotal</th>
-  </tr>
-  <% order.items.each do |item| %>
-  <tr>
-    <td><%= item.title %></td>
-    <td><%= item.get_quantity(order) %></td>
-    <td>$<%= number_with_precision(item.price, :precision => 2) %></td>
-    <td>$<%= number_with_precision(item.cart_subtotal(order), :precision => 2) %></td>
-  </tr>
+<div class='order_info'> 
+  <div class='order_table'>
+    <table>
+      <tr>
+        <th>Order ID</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>Order <%= order.id %></td>
+        <td><%= order.order_date %></td>
+        <td><%= order.order_time %></td>
+        <td><%= order.status %></td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <th>Items</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Subtotal</th>
+      </tr>
+      <% order.items.each do |item| %>
+      <tr>
+        <td><%= item.title %></td>
+        <td><%= item.get_quantity(order) %></td>
+        <td>$<%= number_with_precision(item.price, :precision => 2) %></td>
+        <td>$<%= number_with_precision(item.cart_subtotal(order), :precision => 2) %></td>
+      </tr>
+      <% end %>
+    </table>
+    </div>
+    <div class='summary'>
+    Total (<%= pluralize(order.items.sum(:quantity), "item") %>): $<%= number_with_precision(order.total, :precision => 2) %>
+    <%= link_to "View Order", user_order_path(current_user, order), class:'btn' %>
+   </div>
+</div>
   <% end %>
-</table>
-<h3>Total (<%= pluralize(order.item_count, "item") %>): $<%= number_with_precision(order.total, :precision => 2) %></h3>
-
-<%= link_to "View Order", user_order_path(current_user, order) %>
-<% end %>

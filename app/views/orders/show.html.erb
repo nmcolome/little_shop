@@ -1,9 +1,10 @@
 <h3><%= @order.user.username %></h3>
-
-<table>
+<div class='order_info'> 
+  <div class='order_table'>
+    <table>
   <tr>
     <td>Date: </td>
-    <td><%= @order.created_at.to_date %></td>
+    <td><%= @order.order_date %></td>
   </tr>
   <tr>
     <td>Time: </td>
@@ -19,23 +20,26 @@
   </tr>
 </table>
 
-<table>
-  <tr>
-    <th>Items</th>
-    <th>Quantity</th>
-    <th>Price</th>
-    <th>Subtotal</th>
-  </tr>
+    <table>
+      <tr>
+        <th>Items</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Subtotal</th>
+      </tr>
 
-  <% @order.items.each do |item| %>
-    <tr>
-      <td><%= link_to "#{item.title}", item_path(item) %></td>
-      <td><%= item.get_quantity(@order) %></td>
-      <td>$<%= number_with_precision(item.price, :precision => 2) %></td>
-      <td>$<%= number_with_precision(item.cart_subtotal(@order), :precision => 2) %></td>
-    </tr>
-  <% end %>
-</table>
-
-<h3>Total: $<%= number_with_precision(@order.total, :precision => 2) %></h3>
-<h5>Status: <%= @order.status %></h5>
+      <% @order.items.each do |item| %>
+        <tr>
+          <td><%= link_to "#{item.title}", item_path(item) %></td>
+          <td><%= item.get_quantity(@order) %></td>
+          <td>$<%= number_with_precision(item.price, :precision => 2) %></td>
+          <td>$<%= number_with_precision(item.cart_subtotal(@order), :precision => 2) %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class='summary'>
+    Total: $<%= number_with_precision(@order.total, :precision => 2) %>
+    Status: <%= @order.status %>
+  </div>
+</div>
