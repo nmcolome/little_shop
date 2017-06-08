@@ -29,7 +29,7 @@
   </tr>
   <% end %>
 </table>
-<h3>Total (<%= pluralize(order.items.sum(:quantity), "item") %>): $<%= number_with_precision(order.total, :precision => 2) %></h3>
+<h3>Total (<%= pluralize(order.item_count, "item") %>): $<%= number_with_precision(order.total, :precision => 2) %></h3>
 
 <%= link_to "View Order", user_order_path(current_user, order) %>
 <% end %>

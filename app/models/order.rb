@@ -16,4 +16,8 @@ class Order < ActiveRecord::Base
   def self.orders_filter(status)
     self.where(status: status).order(updated_at: :desc)
   end
+
+  def item_count
+    self.items.sum(:quantity)
+  end
 end
