@@ -20,4 +20,12 @@ class Order < ActiveRecord::Base
   def item_count
     self.items.sum(:quantity)
   end
+
+  def order_date
+    created_at.to_date
+  end
+
+  def order_time
+    created_at.to_date
+  end
 end

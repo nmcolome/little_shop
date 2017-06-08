@@ -8,8 +8,8 @@
   </tr>
   <tr>
     <td>Order <%= order.id %></td>
-    <td><%= order.created_at.to_date %></td>
-    <td><%= order.created_at.strftime("%I:%M%p") %></td>
+    <td><%= order.order_date %></td>
+    <td><%= order.order_time %></td>
     <td><%= order.status %></td>
   </tr>
 </table>

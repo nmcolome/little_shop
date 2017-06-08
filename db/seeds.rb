@@ -102,7 +102,7 @@ class Seeds
         quantity = (1..5).to_a.sample
         order.order_items.last.update_attribute(:quantity, quantity)
         order.order_items.last.update_attribute(:price_at_purchase, order.items.last.price)
-        binding.pry
+      
         puts "Order #{order.id} created for #{user.first_name} #{user.last_name}."
       end
     end
