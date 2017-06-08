@@ -15,16 +15,14 @@
  */
 @import 'base';
 @import 'skeleton';
-// @import 'colors';
-// @import 'typography';
 
 @import 'components/buttons';
 @import 'components/forms';
 @import 'components/navbars';
+@import 'components/links';
+@import 'components/table';
 
-// @import 'sections/header';
-// @import 'sections/about';
-// @import 'sections/history';
-// @import 'sections/services';
-// @import 'sections/customers';
-// @import 'sections/footer';
+@import 'sections/index';
+@import 'sections/cart';
+@import 'sections/admin_orders';
+@import 'sections/user_data';

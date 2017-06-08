@@ -1,0 +1,10 @@
+@import 'base';
+
+.user_data {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  .btn {
+    margin: 0px 550px;
+  }
+}

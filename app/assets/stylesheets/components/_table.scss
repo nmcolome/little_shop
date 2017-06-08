@@ -12,6 +12,7 @@
 
 .summary {
   display: flex;
+  flex-direction: column;
   align-self: flex-end;
 }
 
@@ -26,4 +27,8 @@ table {
       border: 1px solid $divider;
       padding: 5px;
     }
+}
+
+.gral_data {
+  margin: 20px 0;
 }
