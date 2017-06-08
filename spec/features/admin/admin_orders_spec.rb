@@ -98,4 +98,105 @@ RSpec.describe "orders view" do
       expect(order.status).to eq('Completed')
     end
   end
+
+  it "can filter orders to view only those with 'Ordered' status" do
+    order1 = create(:order, status: 0)
+    order2 = create(:order, status: 0)
+    order3 = create(:order, status: 1)
+    order4 = create(:order, status: 1)
+    order5 = create(:order, status: 1)
+    order6 = create(:order, status: 2)
+    order7 = create(:order, status: 3)
+    order8 = create(:order, status: 3)
+    admin = create(:user, role: 1)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit '/admin/dashboard'
+    expect(page).to have_content order1.id
+    expect(page).to have_content order3.id
+    expect(page).to have_content order6.id
+    expect(page).to have_content order7.id
+
+    click_link "Ordered"
+    expect(page).to have_content order1.id
+    expect(page).to_not have_content order3.id
+    expect(page).to_not have_content order6.id
+    expect(page).to_not have_content order7.id
+  end
+
+  it "can filter orders to view only those with 'Paid' status" do
+    order1 = create(:order, status: 0)
+    order2 = create(:order, status: 0)
+    order3 = create(:order, status: 1)
+    order4 = create(:order, status: 1)
+    order5 = create(:order, status: 1)
+    order6 = create(:order, status: 2)
+    order7 = create(:order, status: 3)
+    order8 = create(:order, status: 3)
+    admin = create(:user, role: 1)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit '/admin/dashboard'
+    expect(page).to have_content order1.id
+    expect(page).to have_content order3.id
+    expect(page).to have_content order6.id
+    expect(page).to have_content order7.id
+
+    click_link "Paid"
+    expect(page).to have_content order3.id
+    expect(page).to_not have_content order1.id
+    expect(page).to_not have_content order6.id
+    expect(page).to_not have_content order7.id
+  end
+
+  it "can filter orders to view only those with 'Cancelled' status" do
+    order1 = create(:order, status: 0)
+    order2 = create(:order, status: 0)
+    order3 = create(:order, status: 1)
+    order4 = create(:order, status: 1)
+    order5 = create(:order, status: 1)
+    order6 = create(:order, status: 2)
+    order7 = create(:order, status: 3)
+    order8 = create(:order, status: 3)
+    admin = create(:user, role: 1)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit '/admin/dashboard'
+    expect(page).to have_content order1.id
+    expect(page).to have_content order3.id
+    expect(page).to have_content order6.id
+    expect(page).to have_content order7.id
+
+    click_link "Cancelled"
+    expect(page).to have_content order6.id
+    expect(page).to_not have_content order1.id
+    expect(page).to_not have_content order3.id
+    expect(page).to_not have_content order7.id
+  end
+
+  it "can filter orders to view only those with 'Completed' status" do
+    order1 = create(:order, status: 0)
+    order2 = create(:order, status: 0)
+    order3 = create(:order, status: 1)
+    order4 = create(:order, status: 1)
+    order5 = create(:order, status: 1)
+    order6 = create(:order, status: 2)
+    order7 = create(:order, status: 3)
+    order8 = create(:order, status: 3)
+    admin = create(:user, role: 1)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit '/admin/dashboard'
+    expect(page).to have_content order1.id
+    expect(page).to have_content order3.id
+    expect(page).to have_content order6.id
+    expect(page).to have_content order7.id
+
+    click_link "Completed"
+    expect(page).to have_content order7.id
+    expect(page).to_not have_content order1.id
+    expect(page).to_not have_content order3.id
+    expect(page).to_not have_content order6.id
+  end
+
 end
