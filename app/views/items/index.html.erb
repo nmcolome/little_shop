@@ -2,9 +2,11 @@
   <div class="grid">
   <% @items.each do |item| %>
     <article class='item_container'>
-      <img src="<%= item.image_att %>" >
+      <div class="portrait">
+        <img src="<%= item.image_att %>">
+      </div>
       <%= link_to item.title, item_path(item), class: "link" %>
-      $ <%= number_with_precision(item.price, :precision => 2) %>
+      $<%= number_with_precision(item.price, :precision => 2) %>
 
       <% if item.active? %>
         <%= link_to "Add to Cart", carts_path(item_id: item.id), method: :post, class: "btn" %>

@@ -12,10 +12,10 @@ RSpec.describe "user edits an item" do
       click_on "View All Items"
       expect(current_path).to eq(items_path)
       click_on "Edit Item"
-
+      
       expect(current_path).to eq(edit_admin_item_path(item1)) #"/admin/items/:ITEM_ID/edit"
       fill_in "Description", with: "new description"
-      click_on "Submit"
+      click_on "Update Item"
 
       expect(current_path).to eq(item_path(item1)) #"/admin/items/#{item.id}"
       expect(page).to have_content("new description")
