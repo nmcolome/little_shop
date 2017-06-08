@@ -8,23 +8,23 @@
 
 class Seeds
 
-  DROIDS = ["#{Rails.root}/app/assets/images/items/image_atts/000/000/040/medium/Battle_Droid.png",
-            "#{Rails.root}/app/assets/images/items/image_atts/000/000/084/medium/astromechs-droid.jpg",
-            "#{Rails.root}/app/assets/images/items/image_atts/000/000/085/medium/main-qimg_droid.jpeg",
-            "#{Rails.root}/app/assets/images/items/image_atts/000/000/091/medium/droid_new.jpg",
-            "#{Rails.root}/app/assets/images/items/image_atts/000/000/087/medium/Repwardroid2.jpg"]
+  DROIDS = ["#{Rails.root}/app/assets/images/Battle_Droid.png",
+            "#{Rails.root}/app/assets/images/astromechs-droid.jpg",
+            "#{Rails.root}/app/assets/images/main-qimg_droid.jpeg",
+            "#{Rails.root}/app/assets/images/droid_new.jpg",
+            "#{Rails.root}/app/assets/images/Repwardroid2.jpg"]
 
-  VEHICLES = ["#{Rails.root}/app/assets/images/items/image_atts/000/000/089/medium/ship_1_new.png",
-            "#{Rails.root}/app/assets/images/items/image_atts/000/000/080/medium/TIEfighter2.png",
-            "#{Rails.root}/app/assets/images/items/image_atts/000/000/090/medium/ATAT_ship_new.png",
-            "#{Rails.root}/app/assets/images/items/image_atts/000/000/082/medium/AT-AT.png",
-            "#{Rails.root}/app/assets/images/items/image_atts/000/000/083/medium/MillenniumFalcon.png"]
+  VEHICLES = ["#{Rails.root}/app/assets/images/ship_1_new.png",
+            "#{Rails.root}/app/assets/images/TIEfighter2.png",
+            "#{Rails.root}/app/assets/images/ship_2_new.jpg",
+            "#{Rails.root}/app/assets/images/AT-AT.png",
+            "#{Rails.root}/app/assets/images/MillenniumFalcon.png"]
 
-  POTIONS = ["#{Rails.root}/app/assets/images/items/image_atts/000/000/001/medium/Ageing_potion.png",
-            "#{Rails.root}/app/assets/images/items/image_atts/000/000/076/medium/potion_5.png",
-            "#{Rails.root}/app/assets/images/items/image_atts/000/000/077/medium/potion_4.png",
-            "#{Rails.root}/app/assets/images/items/image_atts/000/000/078/medium/potion_3.png",
-            "#{Rails.root}/app/assets/images/items/image_atts/000/000/088/medium/potion_new.png"]
+  POTIONS = ["#{Rails.root}/app/assets/images/Ageing_potion.png",
+            "#{Rails.root}/app/assets/images/potion_5.png",
+            "#{Rails.root}/app/assets/images/potion_4.png",
+            "#{Rails.root}/app/assets/images/potion_3.png",
+            "#{Rails.root}/app/assets/images/potion_new.png"]
 
 
   def create_users
