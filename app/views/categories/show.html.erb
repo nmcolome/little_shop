@@ -1,7 +1,7 @@
 <h1 class="category_title"><%= @category.name %></h1>
 <div>
   <div class="grid">
-    <% @category.items.each do |item| %>
+    <% @items.each do |item| %>
       <article class='item_container'>
         <div class="portrait">
           <img src="<%= item.image_att %>">
@@ -12,4 +12,8 @@
       </article>
     <% end %>
   </div>
+<footer class="kaminari"> 
+<%= paginate @items %>
+<div><%= page_entries_info @items %></div>
+</footer>
 </div>
