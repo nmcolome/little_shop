@@ -6,9 +6,6 @@ RSpec.describe "A registered user can checkout items in their cart" do
     item2 = create(:item)
     item3 = create(:item)
     item4 = create(:item)
-    # @cart = Cart.new({})
-    # allow_any_instance_of(ApplicationController).to receive(:load_cart).and_return(@cart)
-    # binding.pry
 
     visit item_path(item1)
     click_on 'Add to Cart'
@@ -52,9 +49,7 @@ RSpec.describe "A registered user can checkout items in their cart" do
 
     expect(current_path).to eq '/orders'
     expect(page).to have_content "Order was successfully placed"
-    # within('td')
     page.has_css?('td', text: item1.title)
     page.has_css?('td', text: item1.price)
-    # expect(page).to have_css('td', item.image)
   end
 end

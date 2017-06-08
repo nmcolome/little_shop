@@ -1,40 +1,45 @@
-<h1>Admin Dashboard</h1>
+<div class='container'>
+  <h1>Admin Dashboard</h1>
+  <div class='admin_bar'>
+    <%= link_to "Edit my Profile", edit_admin_dashboard_path(current_user), class: 'link admin_link' %>
+    <%= link_to "Add new item", new_admin_item_path, class: 'link admin_link' %>
+  </div>
+  <span class='hidden'><%= current_user.username %></span>
 
-<%= current_user.username %><br />
+  <div class='status_summary'>
+    <h3>Order Status Summaries:</h3>
+    <section class='status_summary_container'>
+      <article class='status_item'>
+        <%= link_to "View All Orders:", admin_dashboard_path(:filter => "All Orders"), class: 'status_item_title' %>
+        <p class='status_item_body'><%= @order_count.count %></p>
+      </article>
+      <article class='status_item'>
+        <%= link_to "View Ordered:", admin_dashboard_path(:filter => "Ordered"), class: 'status_item_title' %>
+        <p class='status_item_body'><%= @order_count.orders_only("Ordered") %></p>
+      </article>
+      <article class='status_item'>
+        <%= link_to "View Paid:", admin_dashboard_path(:filter => "Paid"), class: 'status_item_title' %>
+        <p class='status_item_body'><%= @order_count.orders_only("Paid") %></p>
+      </article>
+      <article class='status_item'>
+        <%= link_to "View Cancelled:", admin_dashboard_path(:filter => "Cancelled"), class: 'status_item_title' %>
+        <p class='status_item_body'><%= @order_count.orders_only("Cancelled") %></p>
+      </article>
+      <article class='status_item'>
+        <%= link_to "View Completed:", admin_dashboard_path(:filter => "Completed"), class: 'status_item_title' %>
+        <p class='status_item_body'><%= @order_count.orders_only("Completed") %></p>
+      </article>
+    </section>
+  </div>
 
-<%= link_to "Edit my Profile", edit_admin_dashboard_path(current_user) %><br />
-
-<%= link_to "Add new item", new_admin_item_path %><br />
-
-<h5>Order Status Summaries:</h5>
-<table>
-  <tr>
-    <td><button><%= link_to "View All Orders:", admin_dashboard_path(:filter => "All Orders") %></button></td>
-    <td><%= @order_count.count %></td>
-  <tr>
-    <td><button><%= link_to "View Ordered:", admin_dashboard_path(:filter => "Ordered") %></button></td>
-    <td><%= @order_count.orders_only("Ordered") %></td>
-  </tr>
-  <tr>
-    <td><button><%= link_to "View Paid:", admin_dashboard_path(:filter => "Paid") %></button></td>
-    <td><%= @order_count.orders_only("Paid") %></td>
-  </tr>
-  <tr>
-    <td><button><%= link_to "View Cancelled:", admin_dashboard_path(:filter => "Cancelled") %></button></td>
-    <td><%= @order_count.orders_only("Cancelled") %></td>
-  </tr>
-  <tr>
-    <td><button><%= link_to "View Completed:", admin_dashboard_path(:filter => "Completed") %></button></td>
-    <td><%= @order_count.orders_only("Completed") %></td>
-  </tr>
-</table>
-<br />
-
-<% @orders.each do |order| %>
-  <%= link_to "Order #{order.id}, #{order.user.username}", user_order_path(order.user, order) %>
-  <%= form_for order, url: admin_dashboard_path(id: order.id), method: "PUT" do |f| %>
-    <%= f.label "Update Order Status: " %>
-    <%= render partial: order.status, :locals => { :f => f} %>
-    <%= f.submit "Update Status" %>
+  <% @orders.each do |order| %>
+    <div class='order_summary'>
+      <%= link_to "Order #{order.id}, #{order.user.username}", user_order_path(order.user, order), class: 'link' %>
+        <%= form_for order, url: admin_dashboard_path(id: order.id), method: "PUT" do |f| %>
+          <%= f.label "Update Order Status: " %>
+          <%= render partial: order.status, :locals => { :f => f}, class: 'dropdown' %>
+          <%= f.submit "Update Status", class: 'status_btn' %>
+        <% end %>
+    </div>
   <% end %>
-<% end %>
+</div>
