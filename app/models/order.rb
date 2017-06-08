@@ -26,6 +26,6 @@ class Order < ActiveRecord::Base
   end
 
   def order_time
-    created_at.to_date
+    created_at.strftime("%I:%M%p")
   end
 end
