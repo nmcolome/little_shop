@@ -1,10 +1,7 @@
-<% if current_user %>
+<span class='user_data'>
   <h3>Hello, <%= current_user.first_name%> <%= current_user.last_name %></h3>
   <h3><%= current_user.email %></h3>
+  <%#<%= link_to "Edit my Profile", edit_user_path(current_user) %><%#br />%>
 
-  <%= link_to "Edit my Profile", edit_user_path(current_user) %><br />
-
-  <%= link_to "View Past Orders", '/orders' %><br />
-
-  <% else %>
-<% end %>
+  <%= link_to "View Past Orders", '/orders', class: 'btn' %>
+</span>

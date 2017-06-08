@@ -28,7 +28,7 @@ class Seeds
 
 
   def create_users
-    20.times do
+    5.times do
       user = User.create(first_name: Faker::Name.first_name,
                   last_name: Faker::Name.last_name,
                   username: Faker::Cat.unique.name + ((1..1000).to_a).sample.to_s,
@@ -56,7 +56,7 @@ class Seeds
 
   def create_droids
     category = Category.create(name: "Droids")
-    25.times do
+    15.times do
       item = category.items.create(title: Faker::StarWars.droid,
                                   description: Faker::StarWars.quote,
                                   price: (40..5000).to_a.sample,
@@ -67,7 +67,7 @@ class Seeds
 
   def create_vehicles
     category2 = Category.create(name: "Vehicles")
-    25.times do
+    9.times do
       item = category2.items.create(title: Faker::StarWars.vehicle,
                                   description: Faker::StarWars.quote,
                                   price: (40..5000).to_a.sample,
@@ -78,7 +78,7 @@ class Seeds
 
   def create_potions
     category3 = Category.create!(name: "Potions")
-    25.times do
+    9.times do
       item = category3.items.create(title: "Potion of " + Faker::Superhero.power,
                                   description: Faker::Superhero.prefix + " " + Faker::Superhero.suffix,
                                   price: (40..5000).to_a.sample,
@@ -88,17 +88,17 @@ class Seeds
   end
 
   def create_orders
-    20.times do |x|
+    3.times do |x|
       user = User.find(x+1)
       3.times do |i|
         order = user.orders.create(status: (0..3).to_a.sample)
 
-        order.items << Item.find((1..75).to_a.sample)
+        order.items << Item.find((1..30).to_a.sample)
         quantity = (1..5).to_a.sample
         order.order_items.first.update_attribute(:quantity, quantity)
         order.order_items.first.update_attribute(:price_at_purchase, order.items.last.price)
 
-        order.items << Item.find((1..75).to_a.sample)
+        order.items << Item.find((1..30).to_a.sample)
         quantity = (1..5).to_a.sample
         order.order_items.last.update_attribute(:quantity, quantity)
         order.order_items.last.update_attribute(:price_at_purchase, order.items.last.price)
