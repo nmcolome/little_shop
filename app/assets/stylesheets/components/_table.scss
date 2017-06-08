@@ -1,0 +1,29 @@
+@import 'base';
+
+
+.order_info {
+  display: flex;
+  border-bottom: 1px solid $dark;
+  justify-content: space-around;
+  align-items: center;
+  padding: 50px;
+  margin: 25px 0;
+}
+
+.summary {
+  display: flex;
+  align-self: flex-end;
+}
+
+table {
+  	border: 1px solid $divider;
+
+    th {
+      border: 1px solid $divider;
+    }
+
+    td {
+      border: 1px solid $divider;
+      padding: 5px;
+    }
+}

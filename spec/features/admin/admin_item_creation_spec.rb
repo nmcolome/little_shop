@@ -13,12 +13,12 @@ RSpec.describe "item creation" do
       click_on(class: 'login-submit')
 
       click_on "Add new item"
-
+      expect(page).to have_link("Create New Category")
       expect(current_path).to eq new_admin_item_path #new_admin_item_path
       fill_in "Title", with: "Mat"
       fill_in "Description", with: "Black"
       fill_in "Price", with: "50"
-      fill_in "Category list", with: "#{Category.all.first.name}, #{Category.all.last.name}"
+      select "#{Category.all.first.name}", from: "Category list"
       select "active", from: "Status"
 
       click_on "Create Item"
