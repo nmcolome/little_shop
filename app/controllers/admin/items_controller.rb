@@ -2,7 +2,7 @@ class Admin::ItemsController < Admin::BaseController
 
   def new
     @item = Item.new
-    @categories = Category.all.map { |category| category.name }
+    @categories = Category.all.pluck(:name)
   end
 
   def create
@@ -16,6 +16,7 @@ class Admin::ItemsController < Admin::BaseController
 
   def edit
     @item = Item.find(params[:id])
+    @categories = Category.all.pluck(:name)
   end
 
   def update
