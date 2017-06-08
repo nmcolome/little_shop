@@ -1,23 +1,34 @@
-<% @items.each do |item, values| %>
-  <div class="portrait">
-    <img src="<%= item.image_att %>">
+<h1 class="category_title">My Cart</h1>
+
+<div>
+  <div class="cart">
+    <% @items.each do |item, values| %>
+    <article class='item_container'>
+      <div class="portrait">
+        <img src="<%= item.image_att %>">
+      </div>
+      <span>Product: <%= item.title %></span>
+      <span>Description: <%= item.description %></span>
+      <span>Price: $<%= number_with_precision(item.price, :precision => 2) %></span>
+      <span class="adjust">
+        Quantity: <%= values[:quantity] %>
+        <%= button_to "+", carts_path(item_id: item.id) %>
+        <%= button_to "-", cart_path(@cart, item_id: item.id), method: :put %>
+      </span>
+
+      Subtotal: $<%= number_with_precision(values[:subtotal], :precision => 2) %>
+
+      <%= link_to "Remove", cart_path(@cart, item_id: item.id), method: :delete, class: "btn" %>
+    </article>
+    <% end %>
   </div>
-  
-  <p>Product: <%= item.title %></p>
-  <p>Description: <%= item.description %></p>
-  <p>Price: $<%= number_with_precision(item.price, :precision => 2) %></p>
-  <p>Quantity: <%= values[:quantity] %>
-  <%= button_to "+", carts_path(item_id: item.id) %>
-  <%= button_to "-", cart_path(@cart, item_id: item.id), method: :put %></p>
+  <div class="cart_total">
+    <p>Total: $<%= number_with_precision(@cart.total, :precision => 2) %></p>
 
-  <p>Subtotal: $<%= number_with_precision(values[:subtotal], :precision => 2) %></p>
-
-  <p><%= link_to "Remove", cart_path(@cart, item_id: item.id), method: :delete %>
-<% end %>
-<p>Total: $<%= number_with_precision(@cart.total, :precision => 2) %></p>
-
-<% if current_user %>
-  <%= link_to "Checkout", user_orders_path(current_user), method: :post %>
-<% else %>
-  <%= link_to "Login or Create Account to Checkout", login_path %>
-<% end %>
+    <% if current_user %>
+      <%= link_to "Checkout", user_orders_path(current_user), method: :post, class: 'link' %>
+    <% else %>
+      <%= link_to "Login or Create Account to Checkout", login_path, class: 'link' %>
+    <% end %>
+  </div>
+</div>
