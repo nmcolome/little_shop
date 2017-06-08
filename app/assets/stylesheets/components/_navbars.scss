@@ -2,7 +2,7 @@
 
 .navbar {
   align-items: center;
-  background-color: $accent;
+  background-color: #512DA8;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10);
   display: flex;
   justify-content: space-between;
@@ -14,11 +14,14 @@
   }
 
   .nav_links {
+    color: #FFF;
     a {
       margin: 0 20px;
+      height: 100%;
+      color: #FFF;
     }
     a:hover {
-      color: $dark-hover;
+      color: $second-text;
       font-weight: 500;
     }
   }
@@ -44,3 +47,13 @@
     }
   }
 }
+
+.logo {
+  color: #FFF;
+  // background-image: url(/system/items/image_atts/000/000/076/original/logo.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  // background-color: red;
+}
+
