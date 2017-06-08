@@ -16,4 +16,16 @@ class Order < ActiveRecord::Base
   def self.orders_filter(status)
     self.where(status: status).order(updated_at: :desc)
   end
+
+  def item_count
+    self.items.sum(:quantity)
+  end
+
+  def order_date
+    created_at.to_date
+  end
+
+  def order_time
+    created_at.strftime("%I:%M%p")
+  end
 end

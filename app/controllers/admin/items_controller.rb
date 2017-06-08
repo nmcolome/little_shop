@@ -1,7 +1,9 @@
 class Admin::ItemsController < Admin::BaseController
+  before_action :find_item, only: [:update, :edit]
 
   def new
     @item = Item.new
+    @categories = Category.all.pluck(:name)
   end
 
   def create
@@ -14,15 +16,12 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def edit
-    @item = Item.find(params[:id])
+    @categories = Category.all.pluck(:name)
   end
 
   def update
-    @item = Item.find(params[:id])
     @item.update(item_params)
-
     flash.notice = "This item has now been edited"
-
     redirect_to item_path(@item)
   end
 
@@ -31,4 +30,9 @@ class Admin::ItemsController < Admin::BaseController
   def item_params
     params.require(:item).permit(:title, :description, :price, :status, :image_att)
   end
+
+  def find_item
+    @item = Item.find(params[:id])
+  end
+
 end

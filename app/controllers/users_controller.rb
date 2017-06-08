@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-
-before_action :is_correct_user, only: [:edit, :update]
+  before_action :is_correct_user, only: [:edit, :update]
+  before_action :find_user, only: [:edit, :update]
 
   def new
     @user = User.new
@@ -18,16 +18,14 @@ before_action :is_correct_user, only: [:edit, :update]
   end
 
   def show
-    #binding.pry
-    #if current_user
   end
 
   def edit
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
     @user.update(role_params)
     redirect_to edit_user_path(@user), alert: "User role updated."
   end
@@ -40,5 +38,9 @@ private
 
   def role_params
     params.require(:user).permit(:role)
+  end
+
+  def find_user
+    @user = User.find(params[:id])
   end
 end
