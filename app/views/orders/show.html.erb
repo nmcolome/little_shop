@@ -1,25 +1,24 @@
-<h3><%= @order.user.username %></h3>
+<h3 class='hidden'><%= @order.user.username %></h3>
 <div class='order_info'> 
   <div class='order_table'>
-    <table>
-  <tr>
-    <td>Date: </td>
-    <td><%= @order.order_date %></td>
-  </tr>
-  <tr>
-    <td>Time: </td>
-    <td><%= @order.order_time %></td>
-  </tr>
-  <tr>
-    <td>Purchaser: </td>
-    <td><%= @order.user.first_name %> <%= @order.user.last_name %></td>
-  </tr>
-  <tr>
-    <td>Address: </td>
-    <td>Address: <%= @order.user.address %>, <%=@order.user.city %>, <%=@order.user.state %>, <%=@order.user.zipcode %></td>
-  </tr>
-</table>
-
+    <table class='gral_data'>
+      <tr>
+        <td>Date: </td>
+        <td><%= @order.order_date %></td>
+      </tr>
+      <tr>
+        <td>Time: </td>
+        <td><%= @order.order_time %></td>
+      </tr>
+      <tr>
+        <td>Purchaser: </td>
+        <td><%= @order.user.first_name %> <%= @order.user.last_name %></td>
+      </tr>
+      <tr>
+        <td>Address: </td>
+        <td>Address: <%= @order.user.address %>, <%=@order.user.city %>, <%=@order.user.state %>, <%=@order.user.zipcode %></td>
+      </tr>
+    </table>
     <table>
       <tr>
         <th>Items</th>
@@ -27,10 +26,9 @@
         <th>Price</th>
         <th>Subtotal</th>
       </tr>
-
       <% @order.items.each do |item| %>
         <tr>
-          <td><%= link_to "#{item.title}", item_path(item) %></td>
+          <td><%= link_to "#{item.title}", item_path(item), class:'link' %></td>
           <td><%= item.get_quantity(@order) %></td>
           <td>$<%= number_with_precision(item.price, :precision => 2) %></td>
           <td>$<%= number_with_precision(item.cart_subtotal(@order), :precision => 2) %></td>
@@ -39,7 +37,7 @@
     </table>
   </div>
   <div class='summary'>
-    Total: $<%= number_with_precision(@order.total, :precision => 2) %>
-    Status: <%= @order.status %>
+    <h4>Total: $<%= number_with_precision(@order.total, :precision => 2) %></h4>
+    <h4>Status: <%= @order.status %></h4>
   </div>
 </div>
