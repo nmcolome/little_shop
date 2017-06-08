@@ -55,7 +55,7 @@ class Seeds
   end
 
   def create_droids
-    category = Category.create(name: "droid")
+    category = Category.create(name: "Droids")
     25.times do
       item = category.items.create(title: Faker::StarWars.droid,
                                   description: Faker::StarWars.quote,
@@ -66,7 +66,7 @@ class Seeds
   end
 
   def create_vehicles
-    category2 = Category.create(name: "vehicles")
+    category2 = Category.create(name: "Vehicles")
     25.times do
       item = category2.items.create(title: Faker::StarWars.vehicle,
                                   description: Faker::StarWars.quote,
@@ -77,7 +77,7 @@ class Seeds
   end
 
   def create_potions
-    category3 = Category.create!(name: "potions")
+    category3 = Category.create!(name: "Potions")
     25.times do
       item = category3.items.create(title: "Potion of " + Faker::Superhero.power,
                                   description: Faker::Superhero.prefix + " " + Faker::Superhero.suffix,
@@ -102,7 +102,7 @@ class Seeds
         quantity = (1..5).to_a.sample
         order.order_items.last.update_attribute(:quantity, quantity)
         order.order_items.last.update_attribute(:price_at_purchase, order.items.last.price)
-      
+
         puts "Order #{order.id} created for #{user.first_name} #{user.last_name}."
       end
     end
