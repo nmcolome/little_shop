@@ -1,6 +1,6 @@
 # Little Shop of Orders
 
-![Alt text](https://raw.github.com/Benja-Ross/little-shop/app/screen-shots/little_shop_page.png?raw=true "Optional Title")
+![Alt text](https://raw.github.com/Benja-Ross/little-shop/app/screen-shots/little_shop_page.png?raw=true)
 
 Inspired by the most epic twists on Faker Gem data that we could think of, this little ecommerce shop sells potions for superpowers, droids, and vehicles from a galaxy far far away, at great prices too. Visit our site, take a look at some items, effortlessly move starships or a potion of seismic power into your shopping cart. But wait, you don't have much power at all until you sign up for an account. Only then is your fake money good with us. You can also edit your profile, see your past orders, quickly increase the number of each item you wish to purchase. Perhaps you plan to battle the dark side, you're going to need a lot of starships.
 
