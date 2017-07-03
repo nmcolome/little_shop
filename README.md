@@ -32,10 +32,10 @@ The site also has administrative authorization which allows someone with admin s
 
 ## Authors
 
-* **Natalia Colome** - [PurpleBooth](https://github.com/nmcolome)
-* **William Thomas** - [PurpleBooth](https://github.com/wthoma22)
-* **Kristen (squee) Mueller** - [PurpleBooth](https://github.com/squeemishly)
-* **Ben Ross** - [PurpleBooth](https://github.com/Benja-Ross)
+* **Natalia Colome** - [Github](https://github.com/nmcolome)
+* **William Thomas** - [Github](https://github.com/wthoma22)
+* **Kristen (squee) Mueller** - [Github](https://github.com/squeemishly)
+* **Ben Ross** - [Github](https://github.com/Benja-Ross)
 
 ## License
 
